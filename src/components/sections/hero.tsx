@@ -56,19 +56,17 @@ export function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative isolate flex min-h-[92vh] w-full items-center overflow-hidden">
+    <section className="relative isolate flex min-h-[92vh] w-full overflow-x-hidden overflow-y-visible">
       {/* =========================================================
           BACKGROUND
       ========================================================== */}
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-20"
+        className="pointer-events-none absolute inset-0 -z-20 overflow-hidden"
       >
-        {/* Base */}
         <div className="absolute inset-0 bg-white dark:bg-slate-950" />
 
-        {/* Main soft lavender glow */}
         <div
           className="
             absolute
@@ -84,7 +82,6 @@ export function Hero() {
           "
         />
 
-        {/* Right subtle glow */}
         <div
           className="
             absolute
@@ -99,7 +96,6 @@ export function Hero() {
           "
         />
 
-        {/* Bottom-left glow */}
         <div
           className="
             absolute
@@ -113,7 +109,6 @@ export function Hero() {
           "
         />
 
-        {/* Very subtle grid */}
         <div
           className="absolute inset-0 opacity-[0.3] dark:opacity-[0.1]"
           style={{
@@ -136,7 +131,6 @@ export function Hero() {
           }}
         />
 
-        {/* Top line */}
         <div
           className="
             absolute
@@ -150,7 +144,6 @@ export function Hero() {
           "
         />
 
-        {/* Bottom line */}
         <div
           className="
             absolute
@@ -166,14 +159,13 @@ export function Hero() {
       </div>
 
       {/* =========================================================
-          MINIMAL DECORATIVE ELEMENTS
+          DECORATIVE ELEMENTS
       ========================================================== */}
 
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
-        {/* Top-right circle */}
         <div
           className="
             absolute
@@ -188,7 +180,6 @@ export function Hero() {
           "
         />
 
-        {/* Small left circle */}
         <div
           className="
             absolute
@@ -203,7 +194,6 @@ export function Hero() {
           "
         />
 
-        {/* Tiny dots */}
         <span className="absolute left-[7%] top-[35%] h-1.5 w-1.5 rounded-full bg-indigo-400/25" />
 
         <span className="absolute right-[9%] top-[36%] h-1 w-1 rounded-full bg-violet-400/30" />
@@ -215,8 +205,29 @@ export function Hero() {
           MAIN CONTAINER
       ========================================================== */}
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 py-28 sm:px-8 lg:px-10">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10">
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          w-full
+          max-w-7xl
+          px-4
+          py-20
+          sm:px-8
+          sm:py-28
+          lg:px-10
+        "
+      >
+        <div
+          className="
+            grid
+            items-center
+            gap-12
+            lg:grid-cols-[1.02fr_0.98fr]
+            lg:gap-10
+          "
+        >
           {/* =====================================================
               LEFT CONTENT
           ====================================================== */}
@@ -225,42 +236,46 @@ export function Hero() {
             variants={reduceMotion ? undefined : container}
             initial="hidden"
             animate="visible"
-            className="relative"
+            className="relative min-w-0"
           >
             {/* AVAILABLE BADGE */}
 
             <motion.div
               variants={item}
               className="
-                mb-7
+                mb-6
                 inline-flex
+                max-w-full
                 items-center
                 gap-2
                 rounded-full
                 border
                 border-emerald-200/70
                 bg-white/60
-                px-3.5
+                px-3
                 py-1.5
                 shadow-[0_8px_25px_-15px_rgba(16,185,129,0.35)]
                 backdrop-blur-xl
                 dark:border-emerald-400/10
                 dark:bg-white/[0.035]
+                sm:mb-7
+                sm:px-3.5
               "
             >
-              <span className="relative flex h-2 w-2">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
 
               <span
                 className="
-                  text-[9px]
+                  text-[8px]
                   font-medium
                   uppercase
-                  tracking-[0.15em]
+                  tracking-[0.14em]
                   text-emerald-600/80
                   dark:text-emerald-400/80
+                  sm:text-[9px]
                 "
               >
                 Available for work
@@ -276,31 +291,37 @@ export function Hero() {
                 flex
                 items-center
                 gap-2
-                text-[10px]
+                text-[9px]
                 font-mono
                 uppercase
-                tracking-[0.18em]
+                tracking-[0.15em]
                 text-slate-400
                 dark:text-slate-500
+                sm:text-[10px]
+                sm:tracking-[0.18em]
               "
             >
-              <span className="h-px w-7 bg-indigo-300/70" />
+              <span className="h-px w-6 shrink-0 bg-indigo-300/70 sm:w-7" />
 
-              Building digital experiences
+              <span>Building digital experiences</span>
             </motion.div>
 
-            {/* MAIN HEADING */}
+            {/* =====================================================
+                MAIN HEADING
+            ====================================================== */}
 
             <motion.h1
               variants={item}
               className="
                 max-w-[720px]
-                text-[50px]
+                text-[38px]
                 font-bold
-                leading-[1.25]
+                leading-[1.12]
                 tracking-[-0.045em]
                 text-slate-950
-                sm:text-[62px]
+                sm:text-[54px]
+                sm:leading-[1.18]
+                md:text-[62px]
                 lg:text-[70px]
                 xl:text-[76px]
                 dark:text-white
@@ -309,8 +330,6 @@ export function Hero() {
               I build{" "}
               <span
                 className="
-                  inline-block
-                  whitespace-nowrap
                   bg-gradient-to-r
                   from-indigo-600
                   via-indigo-500
@@ -331,25 +350,28 @@ export function Hero() {
             <motion.p
               variants={item}
               className="
-                mt-6
+                mt-5
                 max-w-[650px]
-                text-[15px]
-                leading-7
+                text-[14px]
+                leading-6
                 text-slate-500
+                sm:mt-6
                 sm:text-[16px]
+                sm:leading-7
                 dark:text-slate-400
               "
             >
-              Full Stack AI Developer, Web Automation Engineer & B2b Lead Generation expert
-              creating fast, scalable and intelligent software that turns
-              complex workflows into simple digital experiences.
+              Full Stack AI Developer, Web Automation Engineer & B2B Lead
+              Generation expert creating fast, scalable and intelligent
+              software that turns complex workflows into simple digital
+              experiences.
             </motion.p>
 
             {/* FEATURE PILLS */}
 
             <motion.div
               variants={item}
-              className="mt-7 flex flex-wrap items-center gap-2"
+              className="mt-6 flex flex-wrap items-center gap-2 sm:mt-7"
             >
               {[
                 {
@@ -362,7 +384,7 @@ export function Hero() {
                 },
                 {
                   icon: Workflow,
-                  label: "B2b Lead Generation",
+                  label: "B2B Lead Generation",
                 },
               ].map((feature) => {
                 const Icon = feature.icon;
@@ -373,15 +395,16 @@ export function Hero() {
                     className="
                       group
                       inline-flex
+                      max-w-full
                       items-center
-                      gap-2
+                      gap-1.5
                       rounded-full
                       border
                       border-slate-200/80
                       bg-white/60
-                      px-3.5
+                      px-3
                       py-1.5
-                      text-xs
+                      text-[10px]
                       font-medium
                       text-slate-500
                       shadow-[0_4px_15px_-10px_rgba(15,23,42,0.2)]
@@ -391,6 +414,9 @@ export function Hero() {
                       hover:-translate-y-0.5
                       hover:border-indigo-200
                       hover:text-indigo-600
+                      sm:gap-2
+                      sm:px-3.5
+                      sm:text-xs
                       dark:border-white/[0.07]
                       dark:bg-white/[0.03]
                       dark:text-slate-400
@@ -400,6 +426,7 @@ export function Hero() {
                       className="
                         h-3.5
                         w-3.5
+                        shrink-0
                         text-indigo-500/70
                         transition-colors
                         group-hover:text-indigo-500
@@ -407,7 +434,7 @@ export function Hero() {
                       strokeWidth={1.7}
                     />
 
-                    {feature.label}
+                    <span className="truncate">{feature.label}</span>
                   </div>
                 );
               })}
@@ -418,11 +445,12 @@ export function Hero() {
             <motion.div
               variants={item}
               className="
-                mt-8
+                mt-7
                 grid
                 max-w-[580px]
                 grid-cols-3
                 gap-2
+                sm:mt-8
               "
             >
               {[
@@ -450,13 +478,14 @@ export function Hero() {
                     className="
                       group
                       relative
+                      min-w-0
                       overflow-hidden
-                      rounded-2xl
+                      rounded-xl
                       border
                       border-white/80
                       bg-white/55
-                      px-4
-                      py-3.5
+                      px-2.5
+                      py-3
                       shadow-[0_10px_35px_-25px_rgba(79,70,229,0.35)]
                       backdrop-blur-xl
                       transition-all
@@ -464,6 +493,9 @@ export function Hero() {
                       hover:-translate-y-1
                       hover:border-indigo-200/70
                       hover:bg-white/75
+                      sm:rounded-2xl
+                      sm:px-4
+                      sm:py-3.5
                       dark:border-white/[0.07]
                       dark:bg-white/[0.025]
                     "
@@ -482,31 +514,36 @@ export function Hero() {
                       "
                     />
 
-                    <div className="relative flex items-center gap-2.5">
+                    <div className="relative flex items-center gap-1.5 sm:gap-2.5">
                       <Icon
                         className="
-                          h-4
-                          w-4
+                          h-3.5
+                          w-3.5
                           shrink-0
                           text-indigo-500/60
                           transition-colors
                           group-hover:text-indigo-500
+                          sm:h-4
+                          sm:w-4
                         "
                         strokeWidth={1.7}
                       />
 
-                      <div>
-                        <div className="text-base font-bold text-slate-900 dark:text-white">
+                      <div className="min-w-0">
+                        <div className="text-sm font-bold text-slate-900 sm:text-base dark:text-white">
                           {stat.number}
                         </div>
 
                         <div
                           className="
-                            text-[8px]
+                            truncate
+                            text-[7px]
                             font-mono
                             uppercase
-                            tracking-[0.12em]
+                            tracking-[0.08em]
                             text-slate-400
+                            sm:text-[8px]
+                            sm:tracking-[0.12em]
                             dark:text-slate-500
                           "
                         >
@@ -523,7 +560,7 @@ export function Hero() {
 
             <motion.div
               variants={item}
-              className="mt-5 flex flex-wrap gap-1.5"
+              className="mt-4 flex flex-wrap gap-1.5 sm:mt-5"
             >
               {technologies.map((tech) => (
                 <span
@@ -537,9 +574,9 @@ export function Hero() {
                     border
                     border-slate-200/60
                     bg-white/40
-                    px-2.5
+                    px-2
                     py-1
-                    text-[10px]
+                    text-[9px]
                     font-medium
                     text-slate-400
                     backdrop-blur-sm
@@ -549,6 +586,8 @@ export function Hero() {
                     hover:border-indigo-200
                     hover:bg-indigo-50/60
                     hover:text-indigo-600
+                    sm:px-2.5
+                    sm:text-[10px]
                     dark:border-white/[0.06]
                     dark:bg-white/[0.02]
                     dark:hover:bg-indigo-500/[0.07]
@@ -558,6 +597,7 @@ export function Hero() {
                     className="
                       h-1
                       w-1
+                      shrink-0
                       rounded-full
                       bg-indigo-400/40
                       transition-colors
@@ -574,113 +614,113 @@ export function Hero() {
 
             <motion.div
               variants={item}
-              className="mt-7 flex flex-wrap items-center gap-3"
+              className="mt-6 flex flex-wrap items-center gap-3 sm:mt-7"
             >
-              <Link href="/projects">
-                <button
+              <Link
+                href="/projects"
+                className="
+                  group
+                  relative
+                  inline-flex
+                  h-11
+                  items-center
+                  gap-2
+                  overflow-hidden
+                  rounded-xl
+                  bg-gradient-to-r
+                  from-indigo-500
+                  via-indigo-600
+                  to-violet-600
+                  px-4
+                  text-sm
+                  font-medium
+                  text-white
+                  shadow-[0_12px_25px_-10px_rgba(79,70,229,0.65)]
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:shadow-[0_16px_32px_-10px_rgba(79,70,229,0.7)]
+                  sm:px-5
+                "
+              >
+                <span
                   className="
-                    group
-                    relative
-                    inline-flex
-                    h-11
-                    items-center
-                    gap-2
-                    overflow-hidden
-                    rounded-xl
-                    bg-gradient-to-r
-                    from-indigo-500
-                    via-indigo-600
-                    to-violet-600
-                    px-5
-                    text-sm
-                    font-medium
-                    text-white
-                    shadow-[0_12px_25px_-10px_rgba(79,70,229,0.65)]
+                    pointer-events-none
+                    absolute
+                    inset-y-0
+                    -left-10
+                    w-8
+                    rotate-[20deg]
+                    bg-white/25
+                    blur-sm
                     transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:shadow-[0_16px_32px_-10px_rgba(79,70,229,0.7)]
+                    duration-700
+                    group-hover:left-[120%]
                   "
-                >
-                  <span
-                    className="
-                      pointer-events-none
-                      absolute
-                      inset-y-0
-                      -left-10
-                      w-8
-                      rotate-[20deg]
-                      bg-white/25
-                      blur-sm
-                      transition-all
-                      duration-700
-                      group-hover:left-[120%]
-                    "
-                  />
+                />
 
-                  <Sparkles
-                    className="relative h-4 w-4"
-                    strokeWidth={1.7}
-                  />
+                <Sparkles
+                  className="relative h-4 w-4"
+                  strokeWidth={1.7}
+                />
 
-                  <span className="relative">View Projects</span>
+                <span className="relative">View Projects</span>
 
-                  <ArrowRight
-                    className="
-                      relative
-                      h-4
-                      w-4
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1
-                    "
-                    strokeWidth={1.7}
-                  />
-                </button>
+                <ArrowRight
+                  className="
+                    relative
+                    h-4
+                    w-4
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  "
+                  strokeWidth={1.7}
+                />
               </Link>
 
-              <Link href="/contact">
-                <button
-                  className="
-                    group
-                    inline-flex
-                    h-11
-                    items-center
-                    gap-2
-                    rounded-xl
-                    border
-                    border-slate-200/80
-                    bg-white/60
-                    px-5
-                    text-sm
-                    font-medium
-                    text-slate-600
-                    shadow-sm
-                    backdrop-blur-xl
-                    transition-all
-                    duration-300
-                    hover:-translate-y-0.5
-                    hover:border-indigo-200
-                    hover:bg-white/80
-                    hover:text-indigo-600
-                    dark:border-white/[0.08]
-                    dark:bg-white/[0.035]
-                    dark:text-slate-300
-                  "
-                >
-                  Let's Connect
+              <Link
+                href="/contact"
+                className="
+                  group
+                  inline-flex
+                  h-11
+                  items-center
+                  gap-2
+                  rounded-xl
+                  border
+                  border-slate-200/80
+                  bg-white/60
+                  px-4
+                  text-sm
+                  font-medium
+                  text-slate-600
+                  shadow-sm
+                  backdrop-blur-xl
+                  transition-all
+                  duration-300
+                  hover:-translate-y-0.5
+                  hover:border-indigo-200
+                  hover:bg-white/80
+                  hover:text-indigo-600
+                  sm:px-5
+                  dark:border-white/[0.08]
+                  dark:bg-white/[0.035]
+                  dark:text-slate-300
+                "
+              >
+                Let's Connect
 
-                  <ArrowRight
-                    className="
-                      h-3.5
-                      w-3.5
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-0.5
-                    "
-                    strokeWidth={1.7}
-                  />
-                </button>
+                <ArrowRight
+                  className="
+                    h-3.5
+                    w-3.5
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-0.5
+                  "
+                  strokeWidth={1.7}
+                />
               </Link>
             </motion.div>
 
@@ -705,7 +745,7 @@ export function Hero() {
               </span>
 
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/abdulqayyumrao333-del"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -735,7 +775,7 @@ export function Hero() {
               </a>
 
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/abdul-qayyum"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -765,7 +805,7 @@ export function Hero() {
               </a>
 
               <a
-                href="mailto:abdul@example.com"
+                href="mailto:abdulqayyumrao333@gmail.com"
                 aria-label="Email"
                 className="
                   flex
@@ -821,25 +861,28 @@ export function Hero() {
             className="
               relative
               flex
-              min-h-[520px]
+              min-h-[410px]
+              w-full
               items-center
               justify-center
+              overflow-visible
+              sm:min-h-[520px]
               lg:justify-end
             "
           >
             <div
               className="
                 relative
-                h-[500px]
-                w-[460px]
-                max-w-full
-                sm:h-[570px]
-                sm:w-[540px]
+                h-[390px]
+                w-[300px]
+                max-w-[calc(100vw-32px)]
+                sm:h-[500px]
+                sm:w-[460px]
+                md:h-[570px]
+                md:w-[540px]
               "
             >
-              {/* =================================================
-                  SOFT IMAGE GLOW
-              ================================================== */}
+              {/* SOFT IMAGE GLOW */}
 
               <div
                 aria-hidden
@@ -847,69 +890,76 @@ export function Hero() {
                   absolute
                   left-1/2
                   top-1/2
-                  h-[390px]
-                  w-[350px]
+                  h-[280px]
+                  w-[250px]
                   -translate-x-1/2
                   -translate-y-1/2
                   rounded-[42%]
                   bg-indigo-500/[0.09]
-                  blur-[80px]
+                  blur-[70px]
+                  sm:h-[390px]
+                  sm:w-[350px]
+                  sm:blur-[80px]
                   dark:bg-indigo-500/[0.13]
                 "
               />
 
-              {/* =================================================
-                  LARGE BACK FRAME
-              ================================================== */}
+              {/* LARGE BACK FRAME */}
 
               <div
                 className="
                   absolute
                   left-1/2
                   top-1/2
-                  h-[470px]
-                  w-[370px]
+                  h-[370px]
+                  w-[275px]
                   -translate-x-1/2
                   -translate-y-1/2
-                  rounded-[34px]
+                  rounded-[28px]
                   border
                   border-white/80
                   bg-white/30
-                  shadow-[0_35px_90px_-40px_rgba(79,70,229,0.38)]
+                  shadow-[0_25px_70px_-35px_rgba(79,70,229,0.38)]
                   backdrop-blur-xl
-                  sm:h-[510px]
-                  sm:w-[400px]
+                  sm:h-[470px]
+                  sm:w-[370px]
+                  sm:rounded-[34px]
+                  md:h-[510px]
+                  md:w-[400px]
                   dark:border-white/[0.07]
                   dark:bg-white/[0.025]
                 "
               />
 
-              {/* =================================================
-                  SUBTLE OFFSET FRAME
-              ================================================== */}
+              {/* SUBTLE OFFSET FRAME */}
 
               <div
                 aria-hidden
                 className="
                   absolute
-                  left-[calc(50%-155px)]
-                  top-[calc(50%-215px)]
-                  h-[430px]
-                  w-[310px]
+                  left-[calc(50%-115px)]
+                  top-[calc(50%-175px)]
+                  h-[350px]
+                  w-[230px]
                   rotate-[-2deg]
-                  rounded-[30px]
+                  rounded-[25px]
                   border
                   border-indigo-300/20
-                  sm:left-[calc(50%-168px)]
-                  sm:top-[calc(50%-235px)]
-                  sm:h-[470px]
-                  sm:w-[335px]
+                  sm:left-[calc(50%-145px)]
+                  sm:top-[calc(50%-215px)]
+                  sm:h-[430px]
+                  sm:w-[310px]
+                  sm:rounded-[30px]
+                  md:left-[calc(50%-168px)]
+                  md:top-[calc(50%-235px)]
+                  md:h-[470px]
+                  md:w-[335px]
                   dark:border-indigo-400/[0.10]
                 "
               />
 
               {/* =================================================
-                  PROFILE IMAGE — LARGER
+                  PROFILE IMAGE
               ================================================== */}
 
               <div
@@ -918,10 +968,11 @@ export function Hero() {
                   left-1/2
                   top-1/2
                   z-10
-                  w-[350px]
+                  w-[260px]
                   -translate-x-1/2
                   -translate-y-1/2
-                  sm:w-[365px]
+                  sm:w-[320px]
+                  md:w-[365px]
                 "
               >
                 <div
@@ -929,11 +980,12 @@ export function Hero() {
                     relative
                     aspect-[0.78]
                     overflow-hidden
-                    rounded-[28px]
+                    rounded-[24px]
                     border
                     border-white/95
                     bg-slate-100
-                    shadow-[0_35px_80px_-25px_rgba(15,23,42,0.30)]
+                    shadow-[0_30px_70px_-25px_rgba(15,23,42,0.30)]
+                    sm:rounded-[28px]
                     dark:border-white/[0.09]
                     dark:bg-slate-900
                   "
@@ -943,7 +995,7 @@ export function Hero() {
                     alt="Abdul Qayyum"
                     fill
                     priority
-                    sizes="(max-width: 640px) 320px, 365px"
+                    sizes="(max-width: 640px) 260px, (max-width: 768px) 320px, 365px"
                     className="
                       object-cover
                       transition-transform
@@ -952,7 +1004,6 @@ export function Hero() {
                     "
                   />
 
-                  {/* Natural photo overlay */}
                   <div
                     className="
                       pointer-events-none
@@ -965,83 +1016,96 @@ export function Hero() {
                     "
                   />
 
-                  {/* Image edge detail */}
                   <div
                     className="
                       pointer-events-none
                       absolute
-                      inset-3
-                      rounded-[21px]
+                      inset-2
+                      rounded-[19px]
                       border
                       border-white/30
+                      sm:inset-3
+                      sm:rounded-[21px]
                     "
                   />
 
-                  {/* Top-left bracket */}
                   <span
                     className="
                       absolute
-                      left-5
-                      top-5
-                      h-6
-                      w-6
+                      left-4
+                      top-4
+                      h-5
+                      w-5
                       border-l
                       border-t
                       border-white/85
+                      sm:left-5
+                      sm:top-5
+                      sm:h-6
+                      sm:w-6
                     "
                   />
 
-                  {/* Bottom-right bracket */}
                   <span
                     className="
                       absolute
-                      bottom-5
-                      right-5
-                      h-6
-                      w-6
+                      bottom-4
+                      right-4
+                      h-5
+                      w-5
                       border-b
                       border-r
                       border-white/85
+                      sm:bottom-5
+                      sm:right-5
+                      sm:h-6
+                      sm:w-6
                     "
                   />
                 </div>
 
-                {/* Small image caption */}
+                {/* IMAGE CAPTION */}
+
                 <div
                   className="
                     absolute
-                    -bottom-4
-                    left-6
+                    -bottom-3
+                    left-4
+                    max-w-[calc(100%-16px)]
                     rounded-lg
                     border
                     border-white/80
                     bg-white/75
-                    px-3
+                    px-2.5
                     py-1.5
                     shadow-[0_12px_30px_-15px_rgba(15,23,42,0.25)]
                     backdrop-blur-xl
+                    sm:-bottom-4
+                    sm:left-6
+                    sm:px-3
                     dark:border-white/[0.08]
                     dark:bg-slate-950/70
                   "
                 >
                   <span
                     className="
-                      text-[9px]
+                      whitespace-nowrap
+                      text-[8px]
                       font-mono
                       uppercase
-                      tracking-[0.16em]
+                      tracking-[0.12em]
                       text-slate-400
+                      sm:text-[9px]
+                      sm:tracking-[0.16em]
                       dark:text-slate-500
                     "
                   >
-                    Abdul Qayyum · Developer
+                    Abdul Qayyum
                   </span>
                 </div>
               </div>
 
-              {/* =================================================
-                  PROJECTS FLOATING CARD
-              ================================================== */}
+              {/* PROJECTS FLOATING CARD */}
 
               <motion.div
                 animate={
@@ -1104,9 +1168,7 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* =================================================
-                  AI CARD
-              ================================================== */}
+              {/* AI CARD */}
 
               <motion.div
                 animate={
@@ -1170,9 +1232,7 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              {/* =================================================
-                  SMALL TECH MARK
-              ================================================== */}
+              {/* SMALL TECH MARK */}
 
               <div
                 className="
@@ -1200,27 +1260,30 @@ export function Hero() {
                 <Code2 className="h-4 w-4" strokeWidth={1.7} />
               </div>
 
-              {/* =================================================
-                  AVAILABLE BADGE
-              ================================================== */}
+              {/* AVAILABLE BADGE */}
 
               <div
                 className="
                   absolute
-                  bottom-[7%]
-                  right-[1%]
+                  bottom-[5%]
+                  right-0
                   z-30
                   flex
                   items-center
-                  gap-2
+                  gap-1.5
                   rounded-full
                   border
                   border-emerald-200/80
                   bg-white/85
-                  px-3.5
-                  py-2
+                  px-2.5
+                  py-1.5
                   shadow-[0_15px_35px_-15px_rgba(16,185,129,0.3)]
                   backdrop-blur-xl
+                  sm:bottom-[7%]
+                  sm:right-[1%]
+                  sm:gap-2
+                  sm:px-3.5
+                  sm:py-2
                   dark:border-emerald-400/10
                   dark:bg-slate-950/75
                 "
@@ -1230,7 +1293,7 @@ export function Hero() {
                   <span className="relative h-2 w-2 rounded-full bg-emerald-500" />
                 </span>
 
-                <span className="text-[10px] font-medium text-slate-600 dark:text-slate-300">
+                <span className="text-[9px] font-medium text-slate-600 sm:text-[10px] dark:text-slate-300">
                   Available
                 </span>
 

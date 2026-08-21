@@ -79,12 +79,12 @@ const stats = [
 const socialLinks = [
   {
     icon: Github,
-    href: "https://github.com",
+    href: "https://github.com/abdulqayyumrao333-del",
     label: "GitHub",
   },
   {
     icon: Linkedin,
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/in/abdul-qayyum",
     label: "LinkedIn",
   },
   {

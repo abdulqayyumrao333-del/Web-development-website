@@ -17,6 +17,7 @@ const PROJECTS = [
     tech: ["Next.js", "OpenAI", "TypeScript"],
     icon: Sparkles,
   },
+
   {
     title: "Cold Email SaaS",
     summary:
