@@ -1,0 +1,10 @@
+<svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(20,20) scale(0.6)">
+    <rect width="200" height="200" rx="48" fill="#0B0F1A"/>
+    <circle cx="100" cy="100" r="62" stroke="#FFFFFF" stroke-width="9" fill="none"/>
+    <path d="M143.8 143.8 L163.6 163.6" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round"/>
+    <path d="M100 52 L70 148 M100 52 L130 148 M80 115 L120 115" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="170" y="88" font-family="Inter, 'Segoe UI', -apple-system, sans-serif" font-size="42" font-weight="600" letter-spacing="-1" fill="#0B0F1A">Abdul Qayyum</text>
+  <text x="171" y="115" font-family="Inter, 'Segoe UI', -apple-system, sans-serif" font-size="16" font-weight="500" letter-spacing="2.5" fill="#6B7280">FULL STACK &amp; AI DEVELOPER</text>
+</svg>

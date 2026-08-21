@@ -1,0 +1,470 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// --- Auth (NextAuth v5 / Auth.js schema) ---------------------------------
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  username      String?   @unique
+  passwordHash  String?   @db.Text
+  role          Role      @default(ADMIN)
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now())
+}
+
+enum Role {
+  ADMIN
+  OWNER
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// --- Content models --------------------------------------------------------
+
+enum ProjectStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  MAINTAINED
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  summary       String
+  description   String   @db.Text
+  coverImage    String
+  gallery       String[]
+  techStack     String[]
+  categories    String[]
+  status        ProjectStatus @default(COMPLETED)
+  startDate     DateTime?
+  endDate       DateTime?
+  features      String[]
+  role          String?
+  liveUrl       String?
+  githubUrl     String?
+  demoVideoUrl  String?
+  featured      Boolean  @default(false)
+  visible       Boolean  @default(true)
+  order         Int      @default(0)
+  seoTitle      String?
+  seoDescription String?
+  caseStudyResearch  String? @db.Text
+  caseStudyPlanning  String? @db.Text
+  caseStudyProblem   String? @db.Text
+  caseStudyArchitecture String? @db.Text
+  caseStudyChallenges String? @db.Text
+  caseStudySolution  String? @db.Text
+  caseStudyResults   String? @db.Text
+  caseStudyLessons   String? @db.Text
+  folderStructure String? @db.Text
+  techInsights    String? @db.Text
+  futureRoadmap   String? @db.Text
+  publishedAt   DateTime @default(now())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// ── Map Location (ONLY ONCE) ──
+model MapLocation {
+  id          String   @id @default(cuid())
+  label       String
+  type        MapLocationType @default(MILESTONE)
+  latitude    Float
+  longitude   Float
+  description String?  @db.Text
+  linkUrl     String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+enum MapLocationType {
+  CLIENT
+  COLLABORATION
+  MILESTONE
+}
+
+enum ArticleStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+  ARCHIVED
+  TRASHED
+}
+
+enum ArticleLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+model BlogPost {
+  id             String    @id @default(cuid())
+  title          String
+  subtitle       String?
+  slug           String    @unique
+  excerpt        String
+  contentMdx     String    @db.Text
+  coverImage     String
+  ogImage        String?
+  category       String
+  author         String?
+  tags           String[]
+  technologies   String[]
+  level          ArticleLevel?
+  status         ArticleStatus @default(DRAFT)
+  previousStatus ArticleStatus?
+  scheduledAt    DateTime?
+  seriesName     String?
+  seriesOrder    Int?
+  faqs           Json?
+  viewCount      Int       @default(0)
+  featured       Boolean   @default(false)
+  seoTitle       String?
+  seoDescription String?
+  canonicalUrl   String?
+  focusKeyword   String?
+  seoMeta        Json?
+  readingTime    Int?
+  publishedAt    DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  revisions      BlogPostRevision[]
+  analyticsEvents AnalyticsEvent[]
+}
+
+model AnalyticsEvent {
+  id         String   @id @default(cuid())
+  blogPostId String
+  blogPost   BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  sessionId  String
+  referrer   String?
+  device     String?
+  createdAt  DateTime @default(now())
+
+  @@index([blogPostId])
+  @@index([blogPostId, createdAt])
+  @@index([sessionId, blogPostId, createdAt])
+}
+
+model BlogPostRevision {
+  id             String   @id @default(cuid())
+  blogPostId     String
+  blogPost       BlogPost @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  versionNumber  Int
+  title          String
+  slug           String
+  excerpt        String
+  contentMdx     String   @db.Text
+  category       String
+  tags           String[]
+  status         ArticleStatus
+  seoTitle       String?
+  seoDescription String?
+  changeSummary  String[]
+  createdAt      DateTime @default(now())
+
+  @@index([blogPostId])
+}
+
+model Media {
+  id               String   @id @default(cuid())
+  url              String
+  storageKey       String   @unique
+  filename         String
+  originalFilename String
+  mimeType         String
+  size             Int
+  width            Int?
+  height           Int?
+  altText          String?
+  caption          String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([createdAt])
+}
+
+enum SkillLevel {
+  LEARNING
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+model Skill {
+  id          String      @id @default(cuid())
+  name        String
+  category    String
+  description String?
+  icon        String?
+  level       SkillLevel?
+  learnedAt   DateTime?
+  visible     Boolean     @default(true)
+  order       Int         @default(0)
+}
+
+model Experience {
+  id           String    @id @default(cuid())
+  role         String
+  company      String
+  companyUrl   String?
+  location     String?
+  startDate    DateTime
+  endDate      DateTime?
+  isCurrent    Boolean   @default(false)
+  description  String    @db.Text
+  techStack    String[]
+  order        Int       @default(0)
+}
+
+model Education {
+  id          String    @id @default(cuid())
+  degree      String
+  institution String
+  startDate   DateTime
+  endDate     DateTime?
+  description String?   @db.Text
+  order       Int       @default(0)
+}
+
+model Certificate {
+  id           String   @id @default(cuid())
+  title        String
+  issuer       String
+  issueDate    DateTime
+  credentialUrl String?
+  image        String
+  order        Int      @default(0)
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  company   String?
+  avatar    String?
+  quote     String   @db.Text
+  rating    Int      @default(5)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  shortDescription String
+  overview      String   @db.Text
+  whoItsFor     String[]
+  problemsSolved String? @db.Text
+  deliverables  String[]
+  techStack     String[]
+  category      String
+  typicalTimeline String?
+  icon          String?
+  visible       Boolean  @default(true)
+  order         Int      @default(0)
+  seoTitle      String?
+  seoDescription String?
+}
+
+model FAQ {
+  id       String @id @default(cuid())
+  question String
+  answer   String @db.Text
+  category String @default("General")
+  order    Int    @default(0)
+}
+
+model Industry {
+  id          String @id @default(cuid())
+  name        String
+  description String @db.Text
+  icon        String?
+  order       Int    @default(0)
+  visible     Boolean @default(true)
+}
+
+model AvailabilityStatus {
+  id        String   @id @default("singleton")
+  status    AvailabilityLevel @default(AVAILABLE)
+  note      String?
+  updatedAt DateTime @updatedAt
+}
+
+enum AvailabilityLevel {
+  AVAILABLE
+  LIMITED
+  BOOKED
+}
+
+model ContactSubmission {
+  id                    String   @id @default(cuid())
+  name                  String
+  email                 String
+  company               String?
+  country               String?
+  subject               String?
+  message               String   @db.Text
+  projectType           String?
+  budgetRange           String?
+  timeline              String?
+  contactReason         String?
+  preferredContactMethod String?
+  status                ContactStatus @default(NEW)
+  createdAt             DateTime @default(now())
+}
+
+enum ContactStatus {
+  NEW
+  READ
+  REPLIED
+  ARCHIVED
+}
+
+model SiteSettings {
+  id                    String  @id @default("singleton")
+  heroHeadline          String?
+  heroSubheadline       String?
+  resumeUrl             String?
+  metaTitle             String?
+  metaDescription       String?
+  ogImage               String?
+  contactResponseTime   String?
+  workingHoursNote      String?
+}
+
+model FormOption {
+  id      String  @id @default(cuid())
+  group   String
+  label   String
+  order   Int     @default(0)
+  visible Boolean @default(true)
+
+  @@unique([group, label])
+}
+
+model LearningItem {
+  id       String @id @default(cuid())
+  name     String
+  category String
+  progress Int    @default(0)
+  order    Int    @default(0)
+}
+
+model Redirect {
+  id         String   @id @default(cuid())
+  fromPath   String   @unique
+  toPath     String
+  statusCode Int      @default(308)
+  enabled    Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
+
+model SeoOverride {
+  path           String   @id
+  seoTitle       String?
+  seoDescription String?
+  noindex        Boolean  @default(false)
+  nofollow       Boolean  @default(false)
+  ogImage        String?
+  updatedAt      DateTime @updatedAt
+}
+
+model Subscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("subscribers")
+}
+
+// ── Hero Section Settings ──
+model HeroSettings {
+  id                    String   @id @default("singleton")
+  
+  // Headline
+  headline              String   @default("I build Intelligent Digital Products.")
+  subtitle              String   @default("Full Stack AI Developer, Web Automation Engineer & B2b Lead Generation expert creating fast, scalable and intelligent software that turns complex workflows into simple digital experiences.")
+  
+  // Feature Pills (max 3)
+  feature1              String   @default("Full Stack")
+  feature2              String   @default("AI Systems")
+  feature3              String   @default("B2b Lead Generation")
+  
+  // Stats
+  stat1Label            String   @default("Years")
+  stat1Value            String   @default("5+")
+  stat2Label            String   @default("Projects")
+  stat2Value            String   @default("50+")
+  stat3Label            String   @default("Clients")
+  stat3Value            String   @default("40+")
+  
+  // Technologies (JSON array)
+  technologies          String   @default("[\"React\",\"Next.js\",\"TypeScript\",\"Node.js\",\"Python\",\"AI / ML\"]")
+  
+  // CTA Buttons
+  ctaPrimaryText        String   @default("View Projects")
+  ctaPrimaryLink        String   @default("/projects")
+  ctaSecondaryText      String   @default("Let's Connect")
+  ctaSecondaryLink      String   @default("/contact")
+  
+  // Social Links
+  githubUrl             String   @default("https://github.com/yourusername")
+  linkedinUrl           String   @default("https://linkedin.com/in/yourusername")
+  emailAddress          String   @default("abdul@example.com")
+  
+  // Availability
+  availabilityText      String   @default("Available for work")
+  availabilityStatus    String   @default("Available")
+  
+  // Profile Image
+  profileImage          String   @default("/images/profile.jpg")
+  
+  // SEO
+  seoTitle              String?  
+  seoDescription        String?
+  
+  updatedAt             DateTime @updatedAt
+}

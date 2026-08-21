@@ -1,0 +1,19 @@
+<svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="auroraStrokeWM" x1="10" y1="10" x2="150" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+  <!-- Icon, scaled to 120x120, positioned at (20,20) -->
+  <g transform="translate(20,20) scale(0.6)">
+    <rect width="200" height="200" rx="48" fill="#12172A"/>
+    <circle cx="100" cy="100" r="62" stroke="url(#auroraStrokeWM)" stroke-width="9" fill="none"/>
+    <path d="M143.8 143.8 L163.6 163.6" stroke="url(#auroraStrokeWM)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M100 52 L70 148 M100 52 L130 148 M80 115 L120 115" stroke="url(#auroraStrokeWM)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="170" y="88" font-family="Inter, 'Segoe UI', -apple-system, sans-serif" font-size="42" font-weight="600" letter-spacing="-1" fill="#FFFFFF">Abdul Qayyum</text>
+  <text x="171" y="115" font-family="Inter, 'Segoe UI', -apple-system, sans-serif" font-size="16" font-weight="500" letter-spacing="2.5" fill="#8B8FA3">FULL STACK &amp; AI DEVELOPER</text>
+</svg>

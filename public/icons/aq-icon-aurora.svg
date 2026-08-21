@@ -1,0 +1,22 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="auroraStroke" x1="30" y1="30" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <filter id="auroraGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="48" fill="#0B0F1A"/>
+  <g filter="url(#auroraGlow)">
+    <circle cx="100" cy="100" r="62" stroke="url(#auroraStroke)" stroke-width="9" fill="none"/>
+    <path d="M143.8 143.8 L163.6 163.6" stroke="url(#auroraStroke)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M100 52 L70 148 M100 52 L130 148 M80 115 L120 115" stroke="url(#auroraStroke)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
