@@ -167,7 +167,7 @@ None of these are exotic — they're the ordinary cost of building something wit
 This project is still being built in phases — the admin dashboard's CRUD modules, a redirect manager, and a proper SEO health-score system are in progress alongside the public-facing pages. The build log continues.
 
 If you're building something with a similarly content-heavy architecture, the one piece of advice that generalizes: decide early which fields are allowed to be empty, and make sure every consumer of that data — not just the page you're looking at — treats "empty" as a real, valid state instead of something to paper over with a placeholder.
-\`,
+`,
   },
   {
     title: "My Journey to Becoming a Full Stack Software Engineer",
@@ -188,7 +188,7 @@ If you're building something with a similarly content-heavy architecture, the on
       { question: "Is Abdul Qayyum a professional software engineer with years of industry experience?", answer: "No — he's a Computer Science student who has been building real freelance and personal projects since 2024. This article is intentionally honest about that timeline rather than inflating it." },
       { question: "What is Abdul currently focused on?", answer: "Full-stack development, AI-powered applications, and workflow automation — see the Skills and Current Focus sections of the About page for the full, current list." },
     ],
-    contentMdx: \`
+      contentMdx: `
 There's a version of this post that would be easy to write and dishonest: a "10 years of experience" origin story with invented milestones. This isn't that post.
 
 ## Where it started
@@ -220,7 +220,7 @@ The 2026 chapter of this has been building a production-grade personal portfolio
 The honest, current-stage version of the long-term direction: become a stronger full-stack engineer, build genuinely useful AI-powered products, grow Qaynova, and — much further out — contribute to and eventually build software at a larger scale. These are goals being worked toward, not a résumé of what's already been achieved.
 
 If there's a single takeaway for someone earlier in a similar path: the projects that taught the most weren't the ones with the cleanest planning — they were the ones that got finished, shipped, and occasionally broke in production in front of someone.
-\`,
+	`,
   },
   {
     title: "React vs Next.js in 2026: Which One Should You Choose?",
@@ -388,7 +388,7 @@ For most Next.js applications, a platform like Vercel removes an entire category
 ## The order matters more than the choices
 
 The mistake that costs the most time isn't picking the "wrong" framework — frameworks in this space are all capable of building most applications. It's making decision #5 (auth) or #6 (deployment) before deciding #1 (what the application actually needs to do well). A content-heavy site optimized like an interaction-heavy dashboard — or vice versa — is the most common architecture mistake in full-stack projects, and it's invisible until performance or SEO becomes a problem months later.
-\`,
+`,
   },
   {
     title: "How to Improve Website Performance and Achieve a 95+ Lighthouse Score",
@@ -566,7 +566,7 @@ Prisma's fluent API makes it easy to write a query that looks simple but generat
 ## The pattern underneath all of these
 
 Every one of these practices comes down to the same thing: don't let Prisma's convenience hide a decision you'd make deliberately in raw SQL. Nullable fields, selective queries, reviewable migrations, and deliberate indexes are all just "do the same disciplined thing you'd do without an ORM" — Prisma removes the boilerplate, not the responsibility.
-\`,
+`,
   },
   {
     title: "Building SEO-Friendly Next.js Applications",
