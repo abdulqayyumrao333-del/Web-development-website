@@ -13,7 +13,7 @@ const certificateSchema = z.object({
   issuer: z.string().min(1, "Issuer is required"),
   issueDate: z.string().min(1, "Issue date is required"),
   credentialUrl: z.string().url("Invalid URL").optional().nullable(),
-  image: z.string().optional().nullable(),
+  image: z.string().min(1, "Image is required"),
   order: z.number().int().default(0),
 });
 
@@ -137,7 +137,7 @@ export async function reorderCertificates(orderedIds: string[]): Promise<BlogAct
     );
 
     revalidatePath("/admin/certificates");
-    return { success: true };
+    return { success: true, data: undefined };
   } catch (err) {
     return { success: false, error: handleBlogActionError(err) };
   }

@@ -7,6 +7,7 @@ import { Eye, Pencil, Trash2, GripVertical, Plus } from "lucide-react";
 import type { Service } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { StatusBadge } from "@/components/admin/status-badge";
 import { DataTable } from "@/components/admin/data-table";
 import { ConfirmDeleteDialog } from "@/components/admin/confirm-delete-dialog";
 import { deleteService } from "@/app/(admin)/admin/services/actions";
@@ -55,16 +56,14 @@ export function ServicesTable({ services: initialServices }: ServicesTableProps)
       accessorKey: "category",
       header: "Category",
       cell: ({ row }: { row: { original: Service } }) => (
-        <Badge variant="outline">{row.original.category}</Badge>
+        <Badge>{row.original.category}</Badge>
       ),
     },
     {
       accessorKey: "visible",
       header: "Status",
       cell: ({ row }: { row: { original: Service } }) => (
-        <Badge variant={row.original.visible ? "default" : "secondary"}>
-          {row.original.visible ? "Visible" : "Hidden"}
-        </Badge>
+        <StatusBadge status={row.original.visible ? "visible" : "hidden"} />
       ),
     },
     {

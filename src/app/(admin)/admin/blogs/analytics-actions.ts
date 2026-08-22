@@ -5,6 +5,7 @@ import { requireAdmin, type BlogActionResult } from "@/app/(admin)/admin/blogs/a
 import { handleBlogActionError } from "@/app/(admin)/admin/blogs/action-helpers";
 import { getContentStats } from "@/lib/utils";
 import type { ReferrerCategory, DeviceCategory } from "@/lib/analytics";
+import type { ArticleStatus } from "@prisma/client";
 
 export type AnalyticsRangeKey = "today" | "7d" | "30d" | "90d" | "all" | "custom";
 
@@ -120,7 +121,7 @@ export type TopArticle = {
   id: string;
   title: string;
   slug: string;
-  status: string;
+  status: ArticleStatus;
   publishedAt: Date;
   updatedAt: Date;
   views: number;

@@ -276,6 +276,14 @@ const FAQS: FaqSeed[] = [
 type BlogPostSeed = Parameters<typeof prisma.blogPost.create>[0]["data"];
 const BLOG_POSTS: BlogPostSeed[] = [portfolioBuildLog, careerJourney].map((post, i) => ({
   ...post,
+  // portfolio-build-log.ts and career-journey.ts use `as const`, which makes
+  // every array field a readonly tuple. Prisma's generated input types want
+  // plain mutable arrays, so we copy each one here rather than editing the
+  // `as const` source files (which would lose their literal string types
+  // elsewhere, e.g. `level`).
+  tags: [...post.tags],
+  technologies: [...post.technologies],
+  faqs: post.faqs ? post.faqs.map((faq) => ({ ...faq })) : post.faqs,
   coverImage: "/images/blog/placeholder-cover.svg",
   status: "PUBLISHED",
   featured: i === 0,

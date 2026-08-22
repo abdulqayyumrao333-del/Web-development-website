@@ -140,7 +140,7 @@ export async function reorderTestimonials(orderedIds: string[]): Promise<BlogAct
     );
 
     revalidatePath("/admin/testimonials");
-    return { success: true };
+    return { success: true, data: undefined };
   } catch (err) {
     return { success: false, error: handleBlogActionError(err) };
   }

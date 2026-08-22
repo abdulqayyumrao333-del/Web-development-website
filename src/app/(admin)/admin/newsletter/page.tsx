@@ -20,7 +20,7 @@ export default async function NewsletterAdminPage() {
           <h1 className="text-3xl font-bold">Newsletter</h1>
           <p className="text-muted-foreground">Manage your subscribers</p>
         </div>
-        <Button variant="outline" asChild>
+        <Button variant="secondary" asChild>
           <a href="/api/newsletter/export" download>
             <Download className="mr-2 h-4 w-4" />
             Export CSV

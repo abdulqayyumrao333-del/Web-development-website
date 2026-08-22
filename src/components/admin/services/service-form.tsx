@@ -247,7 +247,7 @@ export function ServiceForm({ initialData, isEditing = false }: ServiceFormProps
         </Button>
         <Button
           type="button"
-          variant="outline"
+          variant="secondary"
           onClick={() => router.push("/admin/services")}
         >
           Cancel

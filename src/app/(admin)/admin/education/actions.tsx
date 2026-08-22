@@ -137,7 +137,7 @@ export async function reorderEducations(orderedIds: string[]): Promise<BlogActio
     );
 
     revalidatePath("/admin/education");
-    return { success: true };
+    return { success: true, data: undefined };
   } catch (err) {
     return { success: false, error: handleBlogActionError(err) };
   }

@@ -150,7 +150,7 @@ export async function reorderExperiences(orderedIds: string[]): Promise<BlogActi
     );
 
     revalidatePath("/admin/experience");
-    return { success: true };
+    return { success: true, data: undefined };
   } catch (err) {
     return { success: false, error: handleBlogActionError(err) };
   }

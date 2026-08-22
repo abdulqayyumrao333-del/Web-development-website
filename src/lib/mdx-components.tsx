@@ -18,4 +18,7 @@ export const mdxComponents = {
   Tip: (props: { children: React.ReactNode }) => <Callout type="tip" {...props} />,
 };
 
-export const mdxRehypePlugins = [rehypeSlug, [rehypePrettyCode, prettyCodeOptions]] as const;
+export const mdxRehypePlugins = [
+  rehypeSlug,
+  [rehypePrettyCode, prettyCodeOptions] as [typeof rehypePrettyCode, typeof prettyCodeOptions],
+];

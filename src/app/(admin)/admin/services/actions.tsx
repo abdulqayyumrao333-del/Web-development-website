@@ -156,7 +156,7 @@ export async function reorderServices(orderedIds: string[]): Promise<BlogActionR
     );
 
     revalidatePath("/admin/services");
-    return { success: true };
+    return { success: true, data: undefined };
   } catch (err) {
     return { success: false, error: handleBlogActionError(err) };
   }
