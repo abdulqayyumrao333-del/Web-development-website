@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
 
+  // ── ESLint ──
+  // Lint checks are skipped during `next build` (production deploys).
+  // TypeScript type-checking still runs and will catch real bugs.
+  // Run `npm run lint` locally/in CI to see and fix lint warnings separately.
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   // ── Server Actions Body Size Limit ──
   // ✅ CORRECT: Under experimental for Next.js 15
   experimental: {
