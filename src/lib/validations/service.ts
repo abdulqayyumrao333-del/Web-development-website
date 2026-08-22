@@ -5,7 +5,7 @@ export const serviceSchema = z.object({
   slug: z.string().min(1, "Slug is required").max(100, "Slug is too long")
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Slug must be URL-friendly (e.g., 'full-stack-web-development')"),
   shortDescription: z.string().min(1, "Short description is required").max(200, "Short description is too long"),
-  overview: z.string().optional(),
+  overview: z.string().min(1, "Overview is required"),
   category: z.string().min(1, "Category is required"),
   whoItsFor: z.array(z.string()).default([]),
   deliverables: z.array(z.string()).default([]),

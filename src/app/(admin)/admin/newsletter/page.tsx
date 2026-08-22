@@ -13,6 +13,20 @@ export default async function NewsletterAdminPage() {
   await requireAdmin();
   const result = await getSubscribers();
 
+  if (!result.success) {
+    return (
+      <div className="space-y-6">
+        <div>
+          <h1 className="text-3xl font-bold">Newsletter</h1>
+          <p className="text-muted-foreground">Manage your subscribers</p>
+        </div>
+        <p className="text-destructive">{result.error}</p>
+      </div>
+    );
+  }
+
+  const subscribers = result.data;
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -28,7 +42,7 @@ export default async function NewsletterAdminPage() {
         </Button>
       </div>
 
-      {result.success && result.data?.length === 0 ? (
+      {subscribers.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-12 text-center border rounded-lg">
           <p className="text-muted-foreground">No subscribers yet.</p>
         </div>
@@ -43,7 +57,7 @@ export default async function NewsletterAdminPage() {
               </tr>
             </thead>
             <tbody>
-              {result.data?.map((sub) => (
+              {subscribers.map((sub) => (
                 <tr key={sub.id} className="border-t">
                   <td className="px-4 py-3">{sub.email}</td>
                   <td className="px-4 py-3">{sub.name || "—"}</td>
@@ -59,3 +73,4 @@ export default async function NewsletterAdminPage() {
     </div>
   );
 }
+    

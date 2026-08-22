@@ -2,8 +2,18 @@ import { AlertTriangle, CheckCircle2, XCircle, ExternalLink } from "lucide-react
 import { db } from "@/lib/db";
 import { publishedPostWhere } from "@/lib/blog";
 import { auditContent, findDuplicates, findMissingAltText } from "@/lib/seo-audit";
+import type { SeoIssue } from "@/lib/seo-audit";
 
 export const metadata = { title: "SEO Health" };
+
+type AuditRow = {
+  id: string;
+  title: string;
+  path: string;
+  score: number;
+  issues: SeoIssue[];
+  missingAlt?: number;
+};
 
 function ScoreBadge({ score }: { score: number }) {
   const color = score >= 90 ? "text-success border-success/30" : score >= 60 ? "text-warning border-warning/30" : "text-danger border-danger/30";
@@ -25,16 +35,16 @@ export default async function SeoHealthPage() {
     // database unavailable — tables render empty below
   }
 
-  const projectAudits = projects.map((p) => ({
+  const projectAudits: AuditRow[] = projects.map((p) => ({
     id: p.id, title: p.title, path: `/projects/${p.slug}`,
     ...auditContent({ title: p.title, seoTitle: p.seoTitle, seoDescription: p.seoDescription, summary: p.summary, coverImage: p.coverImage, slug: p.slug }),
   }));
-  const postAudits = posts.map((p) => ({
+  const postAudits: AuditRow[] = posts.map((p) => ({
     id: p.id, title: p.title, path: `/blog/${p.slug}`,
     ...auditContent({ title: p.title, seoTitle: p.seoTitle, seoDescription: p.seoDescription, summary: p.excerpt, coverImage: p.coverImage, slug: p.slug }),
     missingAlt: findMissingAltText(p.contentMdx),
   }));
-  const serviceAudits = services.map((s) => ({
+  const serviceAudits: AuditRow[] = services.map((s) => ({
     id: s.id, title: s.title, path: `/services#${s.slug}`,
     ...auditContent({ title: s.title, seoTitle: null, seoDescription: s.shortDescription, summary: s.shortDescription, coverImage: null, slug: s.slug }),
   }));
@@ -125,7 +135,7 @@ export default async function SeoHealthPage() {
                                 {issue.message}
                               </li>
                             ))}
-                            {"missingAlt" in audit && audit.missingAlt > 0 && (
+                            {(audit.missingAlt ?? 0) > 0 && (
                               <li className="flex items-start gap-1.5 text-xs text-text-secondary">
                                 <AlertTriangle className="mt-0.5 h-3 w-3 shrink-0 text-warning" />
                                 {audit.missingAlt} image(s) missing alt text

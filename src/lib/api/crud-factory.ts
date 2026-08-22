@@ -2,11 +2,12 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Delegate = {
-  findMany: (args?: unknown) => Promise<unknown[]>;
-  create: (args: { data: unknown }) => Promise<unknown>;
-  update: (args: { where: { id: string }; data: unknown }) => Promise<unknown>;
-  delete: (args: { where: { id: string } }) => Promise<unknown>;
+  findMany: (args?: any) => Promise<any[]>;
+  create: (args: { data: any }) => Promise<any>;
+  update: (args: { where: { id: string }; data: any }) => Promise<any>;
+  delete: (args: { where: { id: string } }) => Promise<any>;
 };
 
 /**
