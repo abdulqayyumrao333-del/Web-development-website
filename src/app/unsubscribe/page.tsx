@@ -3,9 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 interface UnsubscribePageProps {
-  searchParams: {
+  searchParams: Promise<{
     email?: string;
-  };
+  }>;
 }
 
 export default async function UnsubscribePage({ searchParams }: UnsubscribePageProps) {

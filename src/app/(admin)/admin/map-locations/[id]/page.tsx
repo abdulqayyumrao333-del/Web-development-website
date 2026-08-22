@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Loader2 } from "lucide-react";
@@ -18,12 +18,13 @@ interface MapLocation {
 }
 
 interface EditPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function EditMapLocationPage({ params }: EditPageProps) {
+  const { id } = use(params);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -31,11 +32,11 @@ export default function EditMapLocationPage({ params }: EditPageProps) {
 
   useEffect(() => {
     fetchLocation();
-  }, [params.id]);
+  }, [id]);
 
   async function fetchLocation() {
     try {
-      const res = await fetch(`/api/map-locations/${params.id}`);
+      const res = await fetch(`/api/map-locations/${id}`);
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
       setLocation(data);
@@ -53,7 +54,7 @@ export default function EditMapLocationPage({ params }: EditPageProps) {
     setSubmitting(true);
 
     try {
-      const res = await fetch(`/api/map-locations/${params.id}`, {
+      const res = await fetch(`/api/map-locations/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(location),

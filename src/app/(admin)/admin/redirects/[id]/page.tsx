@@ -7,15 +7,16 @@ import { getRedirect } from "../actions";
 import { RedirectForm } from "@/components/admin/redirects/redirect-form";
 
 interface EditRedirectPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditRedirectPage({ params }: EditRedirectPageProps) {
   await requireAdmin();
 
-  const result = await getRedirect(params.id);
+  const { id } = await params;
+  const result = await getRedirect(id);
 
   if (!result.success || !result.data) {
     notFound();

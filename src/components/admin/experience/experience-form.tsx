@@ -6,8 +6,27 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, X, Plus } from "lucide-react";
 import { toast } from "sonner";
+import { z } from "zod";
 import type { Experience } from "@prisma/client";
-import { createExperience, updateExperience, experienceSchema, type ExperienceFormValues } from "@/app/(admin)/admin/experience/actions";
+import { createExperience, updateExperience } from "@/app/(admin)/admin/experience/actions";
+
+// ── Validation Schema ──
+// Defined locally (not imported from actions.tsx) because "use server"
+// files can only export async functions, not schema objects.
+const experienceSchema = z.object({
+  role: z.string().min(1, "Role is required"),
+  company: z.string().min(1, "Company is required"),
+  companyUrl: z.string().url("Invalid URL").optional().nullable(),
+  location: z.string().optional().nullable(),
+  startDate: z.string().min(1, "Start date is required"),
+  endDate: z.string().optional().nullable(),
+  isCurrent: z.boolean().default(false),
+  description: z.string().min(1, "Description is required"),
+  techStack: z.array(z.string()).default([]),
+  order: z.number().int().default(0),
+});
+
+type ExperienceFormValues = z.infer<typeof experienceSchema>;
 
 interface ExperienceFormProps {
   initialData?: Experience;

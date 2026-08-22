@@ -7,15 +7,16 @@ import { getEducation } from "../actions";
 import { EducationForm } from "@/components/admin/education/education-form";
 
 interface EditEducationPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditEducationPage({ params }: EditEducationPageProps) {
   await requireAdmin();
 
-  const result = await getEducation(params.id);
+  const { id } = await params;
+  const result = await getEducation(id);
 
   if (!result.success || !result.data) {
     notFound();

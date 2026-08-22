@@ -7,15 +7,16 @@ import { getTestimonial } from "../actions";
 import { TestimonialForm } from "@/components/admin/testimonials/testimonial-form";
 
 interface EditTestimonialPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditTestimonialPage({ params }: EditTestimonialPageProps) {
   await requireAdmin();
 
-  const result = await getTestimonial(params.id);
+  const { id } = await params;
+  const result = await getTestimonial(id);
 
   if (!result.success || !result.data) {
     notFound();

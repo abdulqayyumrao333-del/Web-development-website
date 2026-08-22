@@ -7,15 +7,16 @@ import { getExperience } from "../actions";
 import { ExperienceForm } from "@/components/admin/experience/experience-form";
 
 interface EditExperiencePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditExperiencePage({ params }: EditExperiencePageProps) {
   await requireAdmin();
 
-  const result = await getExperience(params.id);
+  const { id } = await params;
+  const result = await getExperience(id);
 
   if (!result.success || !result.data) {
     notFound();

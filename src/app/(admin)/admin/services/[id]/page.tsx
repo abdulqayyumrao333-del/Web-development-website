@@ -10,15 +10,16 @@ export const metadata: Metadata = {
 };
 
 interface EditServicePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditServicePage({ params }: EditServicePageProps) {
   await requireAdmin();
 
-  const result = await getService(params.id);
+  const { id } = await params;
+  const result = await getService(id);
 
   if (!result.success || !result.data) {
     notFound();

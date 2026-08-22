@@ -7,15 +7,16 @@ import { getCertificate } from "../actions";
 import { CertificateForm } from "@/components/admin/certificates/certificate-form";
 
 interface EditCertificatePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function EditCertificatePage({ params }: EditCertificatePageProps) {
   await requireAdmin();
 
-  const result = await getCertificate(params.id);
+  const { id } = await params;
+  const result = await getCertificate(id);
 
   if (!result.success || !result.data) {
     notFound();
