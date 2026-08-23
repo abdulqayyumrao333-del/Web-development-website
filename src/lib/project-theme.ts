@@ -55,7 +55,7 @@ const DEFAULT_THEME: ProjectTheme = {
 
 export function getProjectTheme(categories: string[]): ProjectTheme {
   for (const category of categories) {
-    if (THEMES[category]) return THEMES[category];
+    if (THEMES[category]) return THEMES[category]!;
   }
   return DEFAULT_THEME;
 }

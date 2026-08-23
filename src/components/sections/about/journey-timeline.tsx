@@ -84,7 +84,7 @@ function TimelineItem({
 }) {
   const Icon = milestone.icon;
   const isLast = index === total - 1;
-  const showYear = index === 0 || milestone.year !== MILESTONES[index - 1].year;
+  const showYear = index === 0 || milestone.year !== MILESTONES[index - 1]?.year;
 
   return (
     <li

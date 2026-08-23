@@ -231,7 +231,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                   {mainNav.map((item, index) => {
                     const active =
                       pathname === item.href ||
-                      (item.href !== "/" &&
+                      ((item.href as string) !== "/" &&
                         pathname.startsWith(`${item.href}/`));
 
                     return (

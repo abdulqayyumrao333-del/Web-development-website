@@ -78,7 +78,7 @@ function HighlightedText({
 }
 
 export function MyStory() {
-  const featured = STORY_CARDS[0];
+  const featured = STORY_CARDS[0]!;
   const FeaturedIcon = featured.icon;
 
   return (

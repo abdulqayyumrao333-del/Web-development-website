@@ -153,7 +153,7 @@ export async function SkillsEcosystem() {
                       {category}
                     </span>
                     <span className="ml-auto text-[8px] text-accent-indigo/15 group-hover:text-accent-indigo/30 transition-colors">
-                      {grouped[category].length}
+                      {grouped[category]!.length}
                     </span>
                   </div>
                 );
@@ -210,11 +210,11 @@ export async function SkillsEcosystem() {
                     {categories.map((category, ci) => {
                       const Icon = categoryIcons[category] || Layers;
                       const colorClass = categoryColors[category] || "from-accent-indigo/20 to-accent-indigo/10";
-                      const skillCount = grouped[category].length;
+                      const skillCount = 	grouped[category]!.length;
                       
                       return (
                         <div key={category} className="group">
-                          <Accordion type="multiple" defaultValue={[categories[0]]}>
+                          <Accordion type="multiple" defaultValue={[categories[0]!]}>
                             <AccordionItem value={category} className="border-0">
                               <AccordionTrigger className="px-5 sm:px-6 py-4 sm:py-5 hover:no-underline hover:bg-accent-indigo/[0.03] transition-colors duration-200">
                                 <div className="flex items-center gap-3 w-full">
@@ -241,7 +241,7 @@ export async function SkillsEcosystem() {
                               <AccordionContent>
                                 <div className="px-5 sm:px-6 pb-5 sm:pb-6">
                                   <div className="flex flex-wrap gap-2">
-                                    {grouped[category].map((skill, si) => (
+                                    {grouped[category]!.map((skill, si) => (
                                       <div
                                         key={skill.id}
                                         className="group/skill relative inline-flex items-center gap-1.5 rounded-full border border-accent-indigo/10 bg-bg-surface-1/50 px-3.5 py-1.5 text-sm transition-all duration-300 hover:border-accent-indigo/30 hover:bg-accent-indigo/[0.05] hover:shadow-sm hover:shadow-accent-indigo/5 hover:-translate-y-0.5"

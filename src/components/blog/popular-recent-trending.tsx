@@ -140,7 +140,7 @@ export async function PopularArticles() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post, i) => (
                 <Reveal key={post.id} delay={0.12 + i * 0.06}>
-                  <BlogCard post={post} index={i} />
+                  <BlogCard post={post} />
                 </Reveal>
               ))}
             </div>
@@ -305,7 +305,7 @@ export async function RecentlyUpdated() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post, i) => (
                 <Reveal key={post.id} delay={0.12 + i * 0.06}>
-                  <BlogCard post={post} index={i} />
+                  <BlogCard post={post} />
                 </Reveal>
               ))}
             </div>

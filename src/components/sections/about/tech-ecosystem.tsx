@@ -38,7 +38,7 @@ export async function TechEcosystem() {
   // group by category — preserves order within each group
   const grouped = skills.reduce<Record<string, typeof skills>>((acc, skill) => {
     if (!acc[skill.category]) acc[skill.category] = [];
-    acc[skill.category].push(skill);
+    acc[skill.category]!.push(skill);
     return acc;
   }, {});
   const categories = Object.keys(grouped);
@@ -178,7 +178,7 @@ export async function TechEcosystem() {
               {categories.map((cat, ci) => {
                 const Icon = categoryIcons[cat] || Code2;
                 const colorClass = categoryColors[cat] || "from-accent-indigo/20 to-accent-indigo/10";
-                const skillCount = grouped[cat].length;
+                grouped[cat]!.length;
                 
                 return (
                   <Reveal key={cat} delay={0.1 + ci * 0.06}>
@@ -254,7 +254,7 @@ export async function TechEcosystem() {
 
                         {/* Tech badges in a clean grid */}
                         <div className="flex flex-wrap gap-2">
-                          {grouped[cat].map((skill, i) => (
+                          {grouped[cat]!.map((skill, i) => (
                             <span
                               key={skill.id}
                               className={`

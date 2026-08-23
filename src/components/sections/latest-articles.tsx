@@ -181,7 +181,7 @@ export async function LatestArticles() {
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
                   {posts.map((post, i) => (
                     <Reveal key={post.id} delay={0.12 + i * 0.06}>
-                      <BlogCard post={post} index={i} />
+                      <BlogCard post={post} />
                     </Reveal>
                   ))}
                 </div>
