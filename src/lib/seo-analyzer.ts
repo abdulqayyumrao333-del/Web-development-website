@@ -15,15 +15,15 @@ export type SeoAnalysis = {
 
 function extractHeadings(content: string): { level: number; text: string }[] {
   const matches = [...content.matchAll(/^(#{1,6})\s+(.+)$/gm)];
-  return matches.map((m) => ({ level: m[1].length, text: m[2].trim() }));
+  return matches.map((m) => ({ level: (m[1] ?? "").length, text: (m[2] ?? "").trim() }));
 }
 
 function extractLinks(content: string): { text: string; url: string }[] {
-  return [...content.matchAll(/(?<!!)\[([^\]]*)\]\(([^)]+)\)/g)].map((m) => ({ text: m[1], url: m[2] }));
+  return [...content.matchAll(/(?<!!)\[([^\]]*)\]\(([^)]+)\)/g)].map((m) => ({ text: m[1] ?? "", url: m[2] ?? "" }));
 }
 
 function extractImages(content: string): { alt: string; url: string }[] {
-  return [...content.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)].map((m) => ({ alt: m[1], url: m[2] }));
+  return [...content.matchAll(/!\[([^\]]*)\]\(([^)]+)\)/g)].map((m) => ({ alt: m[1] ?? "", url: m[2] ?? "" }));
 }
 
 export function analyzeSeo({

@@ -12,17 +12,17 @@ type State = { hasError: boolean };
 // down the whole page. Never surfaces the underlying error message to the
 // visitor — logs it server/console-side only.
 export class SectionErrorBoundary extends Component<Props, State> {
-  state: State = { hasError: false };
+  override state: State = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error) {
+  override componentDidCatch(error: Error) {
     console.warn(`[SectionErrorBoundary:${this.props.label}]`, error);
   }
 
-  render() {
+  override render() {
     if (this.state.hasError) {
       return (
         <div className="flex flex-col items-center rounded-md border border-dashed border-border py-14 text-center">

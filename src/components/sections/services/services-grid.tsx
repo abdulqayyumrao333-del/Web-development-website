@@ -158,7 +158,7 @@ export async function ServicesGrid() {
                     const relatedProjects = projects.filter((p) => p.categories.includes(service.category));
                     return (
                       <Reveal key={service.id} delay={0.12 + i * 0.06}>
-                        <ServiceCard service={service} relatedProjects={relatedProjects} index={i} />
+                        <ServiceCard service={service} relatedProjects={relatedProjects} />
                       </Reveal>
                     );
                   })}
