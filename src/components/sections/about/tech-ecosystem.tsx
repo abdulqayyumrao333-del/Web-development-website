@@ -178,7 +178,7 @@ export async function TechEcosystem() {
               {categories.map((cat, ci) => {
                 const Icon = categoryIcons[cat] || Code2;
                 const colorClass = categoryColors[cat] || "from-accent-indigo/20 to-accent-indigo/10";
-                grouped[cat]!.length;
+                const skillCount = grouped[cat]!.length;
                 
                 return (
                   <Reveal key={cat} delay={0.1 + ci * 0.06}>
