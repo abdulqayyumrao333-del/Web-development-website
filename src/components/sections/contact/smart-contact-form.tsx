@@ -10,6 +10,7 @@ import {
   Send, Sparkles, ArrowRight, X, File, Upload, Loader2
 } from "lucide-react";
 import { z } from "zod";
+import { toast } from "sonner";
 import { contactFormSchema } from "@/lib/validations";
 import { submitContactForm } from "@/app/contact/actions";
 import { RelatedProjectsByType } from "@/components/sections/contact/related-projects-by-type";

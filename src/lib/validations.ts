@@ -12,6 +12,7 @@ export const contactFormSchema = z.object({
   timeline: z.string().max(100).optional().or(z.literal("")),
   contactReason: z.string().max(100).optional().or(z.literal("")),
   preferredContactMethod: z.string().max(50).optional().or(z.literal("")),
+  attachment: z.string().optional().or(z.literal("")),
 });
 
 export const projectSchema = z.object({
