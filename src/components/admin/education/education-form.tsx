@@ -40,8 +40,8 @@ export function EducationForm({ initialData, isEditing = false }: EducationFormP
     defaultValues: {
       degree: initialData?.degree || "",
       institution: initialData?.institution || "",
-      startDate: initialData?.startDate ? new Date(initialData.startDate).toISOString().split("T")[0] : "",
-      endDate: initialData?.endDate ? new Date(initialData.endDate).toISOString().split("T")[0] : "",
+      startDate: initialData?.startDate ? new Date(initialData.startDate).toISOString().split("T")[0] ?? "" : "",
+      endDate: initialData?.endDate ? new Date(initialData.endDate).toISOString().split("T")[0] ?? "" : "",
       description: initialData?.description || "",
       order: initialData?.order || 0,
     },

@@ -43,8 +43,7 @@ export async function TechnologyTimeline() {
   // Group by year
   const groupedByYear = skills.reduce<Record<string, typeof skills>>((acc, skill) => {
     const year = skill.learnedAt.getFullYear().toString();
-    if (!acc[year]) acc[year] = [];
-    acc[year].push(skill);
+    (acc[year] ??= []).push(skill);
     return acc;
   }, {});
 
@@ -220,7 +219,7 @@ export async function TechnologyTimeline() {
                     {year}
                   </span>
                   <span className="ml-auto text-[8px] text-accent-indigo/15 group-hover:text-accent-indigo/30 transition-colors">
-                    {groupedByYear[year].length}
+                    {(groupedByYear[year] ?? []).length}
                   </span>
                 </div>
               ))}
@@ -253,14 +252,14 @@ export async function TechnologyTimeline() {
                       </span>
                       <span className="h-px flex-1 bg-gradient-to-r from-accent-indigo/15 to-transparent" />
                       <span className="text-[10px] font-mono text-accent-indigo/30">
-                        {groupedByYear[year].length} technologies
+                        {(groupedByYear[year] ?? []).length} technologies
                       </span>
                     </div>
                   </Reveal>
 
                   {/* Skills for this year */}
                   <div className="flex flex-col gap-2.5 pl-1">
-                    {groupedByYear[year].map((skill, i) => {
+                    {(groupedByYear[year] ?? []).map((skill, i) => {
                       const Icon = categoryIcons[skill.category] || Layers;
                       const colorClass = categoryColors[skill.category] || "from-accent-indigo/20 to-accent-indigo/10";
                       const month = skill.learnedAt.toLocaleDateString(undefined, { month: "short" });

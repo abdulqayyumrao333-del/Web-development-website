@@ -53,9 +53,12 @@ export function CommandPalette() {
         e.preventDefault();
         setSelectedIndex((i) => Math.max(i - 1, 0));
       }
-      if (e.key === "Enter" && filteredItems[selectedIndex]) {
-        router.push(filteredItems[selectedIndex].href);
-        setOpen(false);
+      if (e.key === "Enter") {
+        const selectedItem = filteredItems[selectedIndex];
+        if (selectedItem) {
+          router.push(selectedItem.href);
+          setOpen(false);
+        }
       }
     }
     window.addEventListener("keydown", onKeyDown);

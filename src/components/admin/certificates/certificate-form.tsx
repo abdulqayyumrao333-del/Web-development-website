@@ -47,7 +47,7 @@ export function CertificateForm({ initialData, isEditing = false }: CertificateF
     defaultValues: {
       title: initialData?.title || "",
       issuer: initialData?.issuer || "",
-      issueDate: initialData?.issueDate ? new Date(initialData.issueDate).toISOString().split("T")[0] : "",
+      issueDate: initialData?.issueDate ? new Date(initialData.issueDate).toISOString().split("T")[0] ?? "" : "",
       credentialUrl: initialData?.credentialUrl || "",
       image: initialData?.image || "",
       order: initialData?.order || 0,

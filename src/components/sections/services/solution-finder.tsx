@@ -64,6 +64,7 @@ export function SolutionFinder() {
   }, []);
 
   const done = step >= QUESTIONS.length;
+  const currentQuestion = QUESTIONS[step];
   const category = recommendCategory(answers);
   const matchedServices = services.filter((s) => s.category === category);
   const matchedProjects = projects.filter((p) => p.categories.includes(category)).slice(0, 2);
@@ -196,7 +197,7 @@ export function SolutionFinder() {
               />
 
               <div className="relative">
-                {!done ? (
+                {!done && currentQuestion ? (
                   <>
                     {/* ── Progress Bar ── */}
                     <div className="mb-6 flex items-center gap-3">
@@ -213,15 +214,15 @@ export function SolutionFinder() {
 
                     {/* ── Question ── */}
                     <p className="text-lg font-semibold text-text-primary">
-                      {QUESTIONS[step].question}
+                      {currentQuestion.question}
                     </p>
 
                     {/* ── Options ── */}
                     <div className="mt-5 grid grid-cols-2 gap-3">
-                      {QUESTIONS[step].options.map((opt) => (
+                      {currentQuestion.options.map((opt) => (
                         <button
                           key={opt.label}
-                          onClick={() => answer(QUESTIONS[step].key, opt.value)}
+                          onClick={() => answer(currentQuestion.key, opt.value)}
                           className="group relative overflow-hidden rounded-xl border border-accent-indigo/12 bg-bg-surface-1/50 px-4 py-3.5 text-sm transition-all duration-300 hover:border-accent-indigo/30 hover:bg-accent-indigo/[0.04] hover:-translate-y-0.5 hover:shadow-md"
                         >
                           <div className="flex items-center gap-2.5">

@@ -17,7 +17,7 @@ export function CodeBlock(props: React.HTMLAttributes<HTMLPreElement>) {
   // Detect language from className
   const className = props.className || "";
   const languageMatch = className.match(/language-(\w+)/);
-  const language = languageMatch ? languageMatch[1] : "";
+  const language = languageMatch?.[1] ?? "";
 
   return (
     <div className="group relative my-6 overflow-hidden rounded-xl border border-accent-indigo/12 bg-gradient-to-br from-bg-surface-1/98 to-bg-surface-1/90 backdrop-blur-sm shadow-lg">

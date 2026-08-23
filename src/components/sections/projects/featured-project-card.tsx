@@ -29,14 +29,16 @@ export function FeaturedProjectCard({ project, index = 0 }: { project: Project; 
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      animate={{ rotateX: tilt.x, rotateY: tilt.y }}
-      transition={{ type: "spring", stiffness: 250, damping: 22 }}
-      style={{ transformPerspective: 1000 }}
       initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
+      animate={{ opacity: 1, y: 0, rotateX: tilt.x, rotateY: tilt.y }}
+      transition={{
+        opacity: { duration: 0.4, delay: index * 0.06 },
+        y: { duration: 0.4, delay: index * 0.06 },
+        rotateX: { type: "spring", stiffness: 250, damping: 22 },
+        rotateY: { type: "spring", stiffness: 250, damping: 22 },
+      }}
       className="group relative overflow-hidden rounded-2xl border border-accent-indigo/12 bg-gradient-to-br from-bg-surface-1/95 to-bg-surface-1/70 backdrop-blur-sm transition-all duration-400 hover:border-accent-indigo/30 hover:shadow-xl hover:shadow-accent-indigo/5 hover:-translate-y-1 flex flex-col h-full"
-      style={{ boxShadow: panelShadow }}
+      style={{ transformPerspective: 1000, boxShadow: panelShadow }}
     >
       {/* ── Image Section ── */}
       <Link href={`/projects/${project.slug}`} className="block relative w-full aspect-video overflow-hidden bg-accent-indigo/5">
@@ -143,22 +145,6 @@ export function FeaturedProjectCard({ project, index = 0 }: { project: Project; 
             <span>View Project</span>
             <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.75} />
           </Link>
-
-          {/* Project stats */}
-          <div className="flex items-center gap-2 text-[9px] text-text-muted/30">
-            {project.stars !== undefined && project.stars > 0 && (
-              <span className="flex items-center gap-0.5">
-                <Star className="h-3 w-3" strokeWidth={1.5} />
-                {project.stars}
-              </span>
-            )}
-            {project.forks !== undefined && project.forks > 0 && (
-              <span className="flex items-center gap-0.5">
-                <Github className="h-3 w-3" strokeWidth={1.5} />
-                {project.forks}
-              </span>
-            )}
-          </div>
         </div>
 
         {/* bottom accent line */}

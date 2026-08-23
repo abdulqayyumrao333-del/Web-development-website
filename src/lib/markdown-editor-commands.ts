@@ -134,7 +134,7 @@ export function findImageAtCursor(value: string, cursor: number): { start: numbe
   const regex = /!\[([^\]]*)\]\(([^)]*)\)/g;
   let match: RegExpExecArray | null;
   while ((match = regex.exec(value)) !== null) {
-    const [full, alt, url] = match;
+    const [full = "", alt = "", url = ""] = match;
     const start = match.index;
     const end = start + full.length;
     if (cursor >= start && cursor <= end) {

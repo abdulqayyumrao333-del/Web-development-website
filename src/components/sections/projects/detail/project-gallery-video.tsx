@@ -13,6 +13,7 @@ const panelShadow =
 export function ProjectScreenshotsGallery({ project }: { project: Project }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const images = project.gallery;
+  const currentImage = openIndex !== null ? images[openIndex] : undefined;
 
   useEffect(() => {
     if (openIndex === null) return;
@@ -164,7 +165,7 @@ export function ProjectScreenshotsGallery({ project }: { project: Project }) {
       </div>
 
       {/* ── Lightbox ── */}
-      {openIndex !== null && (
+      {openIndex !== null && currentImage && (
         <div
           role="dialog"
           aria-modal
@@ -196,7 +197,7 @@ export function ProjectScreenshotsGallery({ project }: { project: Project }) {
           {/* Image */}
           <div className="relative h-[70vh] w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <Image
-              src={images[openIndex]}
+              src={currentImage}
               alt={`${project.title} screenshot ${openIndex + 1}`}
               fill
               className="object-contain"
@@ -229,9 +230,11 @@ export function ProjectScreenshotsGallery({ project }: { project: Project }) {
 // ── ProjectDemoVideo ──
 function getVideoEmbedUrl(url: string): string | null {
   const youtubeMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
-  if (youtubeMatch) return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+  const youtubeId = youtubeMatch?.[1];
+  if (youtubeId) return `https://www.youtube.com/embed/${youtubeId}`;
   const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
-  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+  const vimeoId = vimeoMatch?.[1];
+  if (vimeoId) return `https://player.vimeo.com/video/${vimeoId}`;
   return null;
 }
 

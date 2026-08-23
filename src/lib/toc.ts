@@ -18,8 +18,11 @@ export function extractTableOfContents(contentMdx: string): TocEntry[] {
     const match = line.match(/^(#{2,3})\s+(.+)$/);
     if (!match) continue;
 
-    const level = match[1].length as 2 | 3;
-    const text = match[2].trim();
+    const [, hashes, rawText] = match;
+    if (!hashes || !rawText) continue;
+
+    const level = hashes.length as 2 | 3;
+    const text = rawText.trim();
     entries.push({ id: slugify(text), text, level });
   }
 
