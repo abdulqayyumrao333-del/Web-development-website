@@ -10,7 +10,6 @@ import type { Service } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import { createService, updateService } from "@/app/(admin)/admin/services/actions";
 import { serviceSchema, type ServiceFormValues } from "@/lib/validations/service";
 

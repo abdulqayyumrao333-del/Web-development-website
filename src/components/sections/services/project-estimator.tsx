@@ -25,7 +25,7 @@ const panelShadow =
   "0 2px 4px rgba(15,23,42,0.04), 0 12px 32px -8px rgba(79,70,229,0.10), 0 32px 64px -16px rgba(79,70,229,0.08)";
 
 export function ProjectEstimator() {
-  const [type, setType] = useState(PROJECT_TYPES[0].label);
+  const [type, setType] = useState(PROJECT_TYPES[0]!.label);
   const [features, setFeatures] = useState<string[]>([]);
 
   const selectedType = PROJECT_TYPES.find((t) => t.label === type)!;

@@ -7,6 +7,8 @@ import { getContentStats } from "@/lib/utils";
 import type { ReferrerCategory, DeviceCategory } from "@/lib/analytics";
 import type { ArticleStatus } from "@prisma/client";
 
+export type { ReferrerCategory, DeviceCategory };
+
 export type AnalyticsRangeKey = "today" | "7d" | "30d" | "90d" | "all" | "custom";
 
 export type AnalyticsRange = { key: AnalyticsRangeKey; from?: string; to?: string };

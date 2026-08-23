@@ -3,12 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Eye, Pencil, Trash2, GripVertical, Plus } from "lucide-react";
+import { Pencil, Trash2, GripVertical, Plus } from "lucide-react";
 import type { Service } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { StatusBadge } from "@/components/admin/status-badge";
-import { DataTable } from "@/components/admin/data-table";
+import { DataTable, type Column } from "@/components/admin/data-table";
 import { ConfirmDeleteDialog } from "@/components/admin/confirm-delete-dialog";
 import { deleteService } from "@/app/(admin)/admin/services/actions";
 import { toast } from "sonner";
@@ -36,55 +36,33 @@ export function ServicesTable({ services: initialServices }: ServicesTableProps)
     setDeleteDialog({ open: false });
   }
 
-  const columns = [
+  const columns: Column<Service>[] = [
     {
-      id: "order",
-      header: "Order",
-      cell: () => <GripVertical className="h-4 w-4 text-muted-foreground" />,
+      key: "order",
+      label: "Order",
+      render: () => <GripVertical className="h-4 w-4 text-muted-foreground" />,
     },
     {
-      accessorKey: "title",
-      header: "Title",
-      cell: ({ row }: { row: { original: Service } }) => (
+      key: "title",
+      label: "Title",
+      render: (s) => (
         <div>
-          <p className="font-medium">{row.original.title}</p>
-          <p className="text-sm text-muted-foreground">{row.original.shortDescription}</p>
+          <p className="font-medium">{s.title}</p>
+          <p className="text-sm text-muted-foreground">{s.shortDescription}</p>
         </div>
       ),
+      sortValue: (s) => s.title,
     },
     {
-      accessorKey: "category",
-      header: "Category",
-      cell: ({ row }: { row: { original: Service } }) => (
-        <Badge>{row.original.category}</Badge>
-      ),
+      key: "category",
+      label: "Category",
+      render: (s) => <Badge>{s.category}</Badge>,
+      sortValue: (s) => s.category,
     },
     {
-      accessorKey: "visible",
-      header: "Status",
-      cell: ({ row }: { row: { original: Service } }) => (
-        <StatusBadge status={row.original.visible ? "visible" : "hidden"} />
-      ),
-    },
-    {
-      id: "actions",
-      header: "Actions",
-      cell: ({ row }: { row: { original: Service } }) => (
-        <div className="flex items-center gap-2">
-          <Link href={`/admin/services/${row.original.id}`}>
-            <Button variant="ghost" size="sm">
-              <Pencil className="h-4 w-4" />
-            </Button>
-          </Link>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setDeleteDialog({ open: true, id: row.original.id })}
-          >
-            <Trash2 className="h-4 w-4 text-destructive" />
-          </Button>
-        </div>
-      ),
+      key: "visible",
+      label: "Status",
+      render: (s) => <StatusBadge status={s.visible ? "visible" : "hidden"} />,
     },
   ];
 
@@ -102,7 +80,28 @@ export function ServicesTable({ services: initialServices }: ServicesTableProps)
         </Link>
       </div>
 
-      <DataTable columns={columns} data={services} />
+      <DataTable
+        rows={services}
+        columns={columns}
+        searchFields={(s) => [s.title, s.category]}
+        emptyMessage="No services yet — add the first one."
+        rowActions={(s) => (
+          <div className="flex items-center justify-end gap-2">
+            <Link href={`/admin/services/${s.id}`}>
+              <Button variant="ghost" size="sm">
+                <Pencil className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setDeleteDialog({ open: true, id: s.id })}
+            >
+              <Trash2 className="h-4 w-4 text-destructive" />
+            </Button>
+          </div>
+        )}
+      />
 
       <ConfirmDeleteDialog
         open={deleteDialog.open}

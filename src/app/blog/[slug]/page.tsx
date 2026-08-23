@@ -55,7 +55,7 @@ export default async function BlogDetailPage({ params }: Props) {
         ]}
       />
       <ViewCountTracker slug={post.slug} />
-      <RecordReadingHistory slug={post.slug} title={post.title} coverImage={post.coverImage} />
+      <RecordReadingHistory slug={post.slug} title={post.title} coverImage={post.coverImage} category={post.category} />
 
       <ArticleHero post={post} />
 

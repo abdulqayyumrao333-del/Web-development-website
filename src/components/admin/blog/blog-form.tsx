@@ -210,7 +210,7 @@ export function BlogForm({ categories, post }: { categories: string[]; post?: Bl
         : await createBlog(fd);
       if (res.success) {
         if (!postIdRef.current) setPostId(res.data.id);
-        if ("updatedAt" in res.data) lastKnownUpdatedAtRef.current = res.data.updatedAt;
+        if ("updatedAt" in res.data && typeof res.data.updatedAt === "string") lastKnownUpdatedAtRef.current = res.data.updatedAt;
         setLastSavedAt(new Date());
         setAutosaveStatus("saved");
       } else {
@@ -338,7 +338,7 @@ export function BlogForm({ categories, post }: { categories: string[]; post?: Bl
       if (res.success) {
         setIsDirty(false);
         setLastSavedAt(new Date());
-        if ("updatedAt" in res.data) lastKnownUpdatedAtRef.current = res.data.updatedAt;
+        if ("updatedAt" in res.data && typeof res.data.updatedAt === "string") lastKnownUpdatedAtRef.current = res.data.updatedAt;
         try {
           window.localStorage.removeItem(draftKey);
         } catch {

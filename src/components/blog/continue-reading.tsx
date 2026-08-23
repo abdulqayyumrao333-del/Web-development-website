@@ -114,7 +114,7 @@ export function ContinueReading() {
                   <span className="text-accent-indigo/15">·</span>
                   <span className="flex items-center gap-1">
                     <Clock className="h-3 w-3" strokeWidth={1.5} />
-                    {new Date(entry.lastReadAt).toLocaleDateString(undefined, { 
+                    {new Date(entry.visitedAt).toLocaleDateString(undefined, { 
                       month: 'short', 
                       day: 'numeric' 
                     })}

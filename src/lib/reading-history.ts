@@ -3,7 +3,7 @@
 const STORAGE_KEY = "aq-reading-history";
 const MAX_ENTRIES = 6;
 
-export type ReadingHistoryEntry = { slug: string; title: string; coverImage: string; visitedAt: number };
+export type ReadingHistoryEntry = { slug: string; title: string; coverImage: string; category: string; visitedAt: number };
 
 export function recordReadingHistory(entry: Omit<ReadingHistoryEntry, "visitedAt">) {
   if (typeof window === "undefined") return;

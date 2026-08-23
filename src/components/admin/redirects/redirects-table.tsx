@@ -61,7 +61,7 @@ export function RedirectsTable({ redirects: initialRedirects }: RedirectsTablePr
     const result = await testRedirect(redirect.fromPath);
     setTesting(null);
 
-    if (result.success && result.data) {
+    if (result.success) {
       toast.success(
         `${redirect.fromPath} → ${result.data.toPath} (${result.data.statusCode})`
       );

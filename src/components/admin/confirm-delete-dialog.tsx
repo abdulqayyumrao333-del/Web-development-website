@@ -6,38 +6,51 @@ import { toast } from "sonner";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
-export function ConfirmDeleteDialog({
-  label,
-  onConfirm,
-  trigger,
-}: {
+type UncontrolledProps = {
+  /** Self-contained mode: dialog manages its own open state, opened via `trigger`. */
   label: string;
   onConfirm: () => Promise<void>;
   trigger: React.ReactNode;
-}) {
-  const [open, setOpen] = useState(false);
+};
+
+type ControlledProps = {
+  /** Controlled mode: parent owns open state and supplies its own copy. */
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onConfirm: () => unknown;
+  title: string;
+  description: string;
+};
+
+export function ConfirmDeleteDialog(props: UncontrolledProps | ControlledProps) {
+  const [internalOpen, setInternalOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+
+  const open = "open" in props ? props.open : internalOpen;
+  const setOpen = "open" in props ? props.onOpenChange : setInternalOpen;
+  const dialogTitle = "open" in props ? props.title : `Delete ${props.label}?`;
+  const dialogDescription = "open" in props
+    ? props.description
+    : `This can't be undone. "${props.label}" will be permanently removed.`;
 
   function handleConfirm() {
     startTransition(async () => {
       try {
-        await onConfirm();
-        toast.success(`${label} deleted.`);
+        await props.onConfirm();
+        if (!("open" in props)) toast.success(`${props.label} deleted.`);
         setOpen(false);
       } catch {
-        toast.error(`Couldn't delete ${label.toLowerCase()}. Try again.`);
+        if (!("open" in props)) toast.error(`Couldn't delete ${props.label.toLowerCase()}. Try again.`);
       }
     });
   }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{trigger}</DialogTrigger>
+      {!("open" in props) && <DialogTrigger asChild>{props.trigger}</DialogTrigger>}
       {open && (
-        <DialogContent title={`Delete ${label}?`}>
-          <p className="text-sm text-text-secondary">
-            This can&apos;t be undone. &quot;{label}&quot; will be permanently removed.
-          </p>
+        <DialogContent title={dialogTitle}>
+          <p className="text-sm text-text-secondary">{dialogDescription}</p>
           <div className="mt-5 flex justify-end gap-2">
             <Button variant="secondary" onClick={() => setOpen(false)}>
               Cancel

@@ -14,8 +14,9 @@ export function ContentInsights({
   const totalViews = timeSeries.reduce((sum, d) => sum + d.views, 0);
   const insights: string[] = [];
 
-  if (topArticles.length > 0) {
-    insights.push(`Your most viewed article is "${topArticles[0].title}" with ${topArticles[0].views.toLocaleString()} views.`);
+  const topArticle = topArticles[0];
+  if (topArticle) {
+    insights.push(`Your most viewed article is "${topArticle.title}" with ${topArticle.views.toLocaleString()} views.`);
   }
   if (totalViews > 0) {
     insights.push(`Your blog received ${totalViews.toLocaleString()} views in the selected period.`);
@@ -23,8 +24,9 @@ export function ContentInsights({
   if (articlesPublished > 0) {
     insights.push(`${articlesPublished} article${articlesPublished === 1 ? " was" : "s were"} published during this period.`);
   }
-  if (timeSeries.length > 0) {
-    const peak = timeSeries.reduce((max, d) => (d.views > max.views ? d : max), timeSeries[0]);
+  const firstPoint = timeSeries[0];
+  if (firstPoint) {
+    const peak = timeSeries.reduce((max, d) => (d.views > max.views ? d : max), firstPoint);
     if (peak.views > 0) {
       insights.push(
         `Your highest traffic day was ${new Date(peak.date).toLocaleDateString(undefined, { month: "long", day: "numeric" })} with ${peak.views.toLocaleString()} views.`,

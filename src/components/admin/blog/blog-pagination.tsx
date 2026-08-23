@@ -110,7 +110,7 @@ function getPageWindow(current: number, total: number): (number | "…")[] {
 
   const withEllipses: (number | "…")[] = [];
   sorted.forEach((p, i) => {
-    if (i > 0 && p - sorted[i - 1] > 1) withEllipses.push("…");
+    if (i > 0 && p - sorted[i - 1]! > 1) withEllipses.push("…");
     withEllipses.push(p);
   });
   return withEllipses;

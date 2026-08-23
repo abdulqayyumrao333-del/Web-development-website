@@ -10,7 +10,7 @@ export function ViewsChart({ data }: { data: ViewsTimeSeriesPoint[] }) {
   }
 
   const totalViews = data.reduce((sum, d) => sum + d.views, 0);
-  const peak = data.reduce((max, d) => (d.views > max.views ? d : max), data[0]);
+  const peak = data.reduce((max, d) => (d.views > max.views ? d : max), data[0]!);
 
   return (
     <div>
@@ -45,8 +45,8 @@ export function ViewsChart({ data }: { data: ViewsTimeSeriesPoint[] }) {
                 borderRadius: 6,
                 fontSize: 12,
               }}
-              labelFormatter={(d: string) => new Date(d).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
-              formatter={(value: number) => [value, "Views"]}
+              labelFormatter={(d) => new Date(String(d)).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
+              formatter={(value) => [value, "Views"]}
             />
             <Line type="monotone" dataKey="views" stroke="var(--accent-indigo)" strokeWidth={2} dot={false} />
           </LineChart>

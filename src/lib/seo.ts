@@ -9,6 +9,7 @@ type GenerateMetadataInput = {
   path: string;
   image?: string;
   type?: "website" | "article";
+  keywords?: string;
   noIndex?: boolean;
   /** Independent of noIndex when explicitly set. If omitted, matches noIndex —
    * preserving the original combined "noIndex implies noFollow" behavior for
@@ -26,6 +27,7 @@ export function generatePageMetadata({
   path,
   image,
   type = "website",
+  keywords,
   noIndex = false,
   noFollow,
   canonicalOverride,
@@ -49,6 +51,7 @@ export function generatePageMetadata({
   return {
     title,
     description,
+    keywords,
     alternates: { canonical },
     robots: { index: !noIndex, follow: !effectiveNoFollow },
     openGraph: {
