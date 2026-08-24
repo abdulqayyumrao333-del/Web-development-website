@@ -1,4 +1,4 @@
-import { getGroqClient, GROQ_MODEL, GroqConfigError } from "@/lib/ai/groq";
+import { getGroqClient, GROQ_MODEL, GroqConfigError, GroqRequestError, toFriendlyAiError } from "@/lib/ai/groq";
 import { db } from "@/lib/db";
 import { siteConfig } from "@/config/site";
 import { publishedPostWhere } from "@/lib/blog";
@@ -89,14 +89,20 @@ export async function POST(request: Request) {
     messages: { role: "user" | "assistant"; content: string }[];
   };
 
-  const system = await buildSystemPrompt();
+    const system = await buildSystemPrompt();
 
-  const stream = await client.chat.completions.create({
-    model: GROQ_MODEL,
-    max_tokens: 1024,
-    stream: true,
-    messages: [{ role: "system", content: system }, ...messages],
-  });
+  let stream;
+  try {
+    stream = await client.chat.completions.create({
+      model: GROQ_MODEL,
+      max_tokens: 1024,
+      stream: true,
+      messages: [{ role: "system", content: system }, ...messages],
+    });
+  } catch (err) {
+    const message = toFriendlyAiError(err instanceof Error ? new GroqRequestError(err.message) : err);
+    return new Response(message, { status: 502 });
+  }
 
   const encoder = new TextEncoder();
   const readable = new ReadableStream({

@@ -242,10 +242,10 @@ export async function TechnologyTimeline() {
             />
 
             <div className="flex flex-col gap-4">
-              {years.map((year) => (
+              {years.map((year, yearIndex) => (
                 <div key={year} className="relative">
                   {/* Year header */}
-                  <Reveal delay={0.1 + parseInt(year) * 0.02}>
+                  <Reveal delay={0.1 + yearIndex * 0.02}>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="text-lg sm:text-xl font-bold text-text-primary">
                         {year}
