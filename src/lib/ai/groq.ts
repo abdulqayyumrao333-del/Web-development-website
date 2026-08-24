@@ -2,7 +2,7 @@ import Groq from "groq-sdk";
 
 /** Central model config — change GROQ_MODEL in the environment rather than
  * editing this file or scattering model strings across the app. */
-export const GROQ_MODEL = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
+export const GROQ_MODEL = process.env.GROQ_MODEL?.trim() || "openai/gpt-oss-120b";
 
 const REQUEST_TIMEOUT_MS = 30_000;
 
