@@ -19,7 +19,7 @@ function CopyButton({ value }: { value: string }) {
         setTimeout(() => setCopied(false), 1500);
       }}
       aria-label="Copy to clipboard"
-      className="rounded-lg border border-gray-200 p-1.5 text-gray-400 hover:text-accent-indigo hover:border-accent-indigo/30 transition-all duration-300 hover:scale-105"
+      className="rounded-lg border border-accent-indigo/12 p-1.5 text-text-muted hover:text-accent-indigo hover:border-accent-indigo/30 transition-all duration-300 hover:scale-105"
     >
       {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" strokeWidth={2} /> : <Copy className="h-3.5 w-3.5" strokeWidth={1.75} />}
     </button>
@@ -76,7 +76,7 @@ export function ContactMethods() {
   ];
 
   return (
-    <section className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28 bg-white">
+    <section className="relative mx-auto max-w-6xl px-6 py-20 sm:py-28">
 
       <div className="grid lg:grid-cols-[minmax(0,15rem)_1fr] gap-10 lg:gap-16 items-start">
 
@@ -98,13 +98,13 @@ export function ContactMethods() {
               </h2>
             </div>
 
-            <p className="text-base text-gray-600 leading-relaxed mt-3 max-w-[14rem]">
+            <p className="text-base text-text-secondary leading-relaxed mt-3 max-w-[14rem]">
               Choose the channel that works best for you — I'm available across multiple platforms.
             </p>
 
             <div className="mt-6 flex items-stretch gap-3">
               <div className="w-0.5 rounded-full bg-gradient-to-b from-accent-indigo/60 via-accent-indigo/25 to-transparent" />
-              <div className="space-y-2.5 text-xs text-gray-400 font-mono">
+              <div className="space-y-2.5 text-xs text-text-muted font-mono">
                 <p className="flex items-center gap-1.5">
                   <span className="h-1 w-1 rounded-full bg-accent-indigo/50" />
                   {methods.length} channels
@@ -130,7 +130,7 @@ export function ContactMethods() {
               {methods.map(({ icon: Icon, label, value, href, copyValue, color, iconColor }, i) => (
                 <Reveal key={label} delay={0.12 + i * 0.05}>
                   <div
-                    className="group relative overflow-hidden rounded-xl border border-gray-200 bg-gradient-to-br from-white to-gray-50/50 transition-all duration-400 hover:border-accent-indigo/30 hover:shadow-lg hover:shadow-accent-indigo/5 hover:-translate-y-0.5 p-5"
+                    className="group relative overflow-hidden rounded-xl border border-accent-indigo/12 bg-gradient-to-br from-bg-surface-1/95 to-bg-surface-1/70 transition-all duration-400 hover:border-accent-indigo/30 hover:shadow-lg hover:shadow-accent-indigo/5 hover:-translate-y-0.5 p-5"
                     style={{ boxShadow: panelShadow }}
                   >
                     {/* hover gradient */}
@@ -142,21 +142,21 @@ export function ContactMethods() {
                     {/* bracket */}
                     <div
                       aria-hidden
-                      className="absolute top-2 right-2 h-3 w-3 border-t border-r border-gray-200 group-hover:border-accent-indigo/25 rounded-tr-sm transition-colors duration-300 pointer-events-none"
+                      className="absolute top-2 right-2 h-3 w-3 border-t border-r border-accent-indigo/12 group-hover:border-accent-indigo/25 rounded-tr-sm transition-colors duration-300 pointer-events-none"
                     />
 
                     <div className="relative">
                       <div className="flex items-center justify-between">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-200 bg-white group-hover:bg-accent-indigo/6 transition-all duration-300 group-hover:scale-105">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-accent-indigo/12 bg-bg-surface-1 group-hover:bg-accent-indigo/6 transition-all duration-300 group-hover:scale-105">
                           <Icon className={`h-5 w-5 ${iconColor} group-hover:text-accent-indigo transition-colors duration-300`} strokeWidth={1.75} />
                         </div>
                         {copyValue && <CopyButton value={copyValue} />}
                       </div>
 
-                      <p className="mt-3 font-semibold text-base text-gray-900 group-hover:text-accent-indigo transition-colors duration-300">
+                      <p className="mt-3 font-semibold text-base text-text-primary group-hover:text-accent-indigo transition-colors duration-300">
                         {label}
                       </p>
-                      <p className="mt-1 text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
+                      <p className="mt-1 text-sm text-text-secondary group-hover:text-text-primary transition-colors">
                         {value}
                       </p>
 
@@ -181,8 +181,8 @@ export function ContactMethods() {
             </div>
 
             {/* bottom strip */}
-            <div className="mt-3.5 flex items-center justify-between rounded-lg border border-gray-200 bg-gray-50/50 px-4 py-2.5">
-              <p className="font-mono text-[11px] text-gray-400">
+            <div className="mt-3.5 flex items-center justify-between rounded-lg border border-accent-indigo/10 bg-accent-indigo/[0.025] px-4 py-2.5">
+              <p className="font-mono text-[11px] text-text-muted">
                 CONTACT · {methods.length} CHANNELS · QUICK RESPONSE
               </p>
               <div className="flex gap-1">
