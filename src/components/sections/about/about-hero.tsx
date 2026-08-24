@@ -123,7 +123,7 @@ export function AboutHero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(249,250,255,0.9) 0%, rgba(255,255,255,1) 45%, rgba(248,249,255,0.9) 100%)",
+              "linear-gradient(180deg, transparent 0%, rgba(99,102,241,0.02) 45%, transparent 100%)",
           }}
         />
 
@@ -229,7 +229,7 @@ export function AboutHero() {
                 ].map((role) => (
                   <span
                     key={role}
-                    className="inline-flex items-center gap-2 rounded-full border border-accent-indigo/10 bg-white/75 px-3.5 py-1.5 text-[10px] font-medium text-text-secondary shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-accent-indigo/25 hover:text-accent-indigo"
+                    className="inline-flex items-center gap-2 rounded-full border border-accent-indigo/10 bg-bg-surface px-3.5 py-1.5 text-[10px] font-medium text-text-secondary shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-accent-indigo/25 hover:text-accent-indigo"
                   >
                     <span className="h-1 w-1 rounded-full bg-accent-indigo/50" />
                     {role}
@@ -256,7 +256,7 @@ export function AboutHero() {
 
                 <Link
                   href="/projects"
-                  className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/80 px-5 py-3 text-sm font-medium text-text-secondary shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-indigo/25 hover:bg-accent-indigo/[0.025] hover:text-accent-indigo"
+                  className="group inline-flex items-center gap-2 rounded-xl border border-border bg-bg-surface px-5 py-3 text-sm font-medium text-text-secondary shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-accent-indigo/25 hover:bg-accent-indigo/[0.025] hover:text-accent-indigo"
                 >
                   View Projects
 
@@ -286,7 +286,7 @@ export function AboutHero() {
                   </span>
                 </div>
 
-                <span className="h-3 w-px bg-slate-200" />
+                <span className="h-3 w-px bg-border" />
 
                 <span className="text-xs text-text-muted">
                   Trusted by 40+ clients worldwide
@@ -296,7 +296,7 @@ export function AboutHero() {
               {/* Location / availability */}
               <motion.div
                 variants={item}
-                className="mt-8 flex flex-wrap items-center gap-5 border-t border-slate-200/70 pt-5"
+                className="mt-8 flex flex-wrap items-center gap-5 border-t border-border pt-5"
               >
                 <div className="flex items-center gap-2 text-xs text-text-muted">
                   <MapPin className="h-3.5 w-3.5 text-accent-indigo/70" />
@@ -333,13 +333,13 @@ export function AboutHero() {
               />
 
               {/* Main profile card */}
-              <div className="relative overflow-hidden rounded-[2rem] border border-slate-200/80 bg-white/85 p-3 shadow-[0_30px_80px_-35px_rgba(79,70,229,0.28)] backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-[2rem] border border-border bg-bg-surface p-3 shadow-[0_30px_80px_-35px_rgba(79,70,229,0.28)] backdrop-blur-xl">
 
                 {/* Card top accent */}
                 <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent-indigo/30 to-transparent" />
 
                 {/* Image */}
-                <div className="relative aspect-[1.12/1] overflow-hidden rounded-[1.55rem] bg-slate-100">
+                <div className="relative aspect-[1.12/1] overflow-hidden rounded-[1.55rem] bg-bg-surface-2">
                   <Image
                     src="/images/profile.jpg"
                     alt="Abdul Qayyum"
@@ -420,7 +420,7 @@ export function AboutHero() {
                     {technologies.map((technology) => (
                       <span
                         key={technology}
-                        className="rounded-full border border-slate-200 bg-slate-50/70 px-2.5 py-1 text-[9px] font-mono text-text-muted transition-colors duration-300 hover:border-accent-indigo/20 hover:text-accent-indigo"
+                        className="rounded-full border border-border bg-bg-surface-2 px-2.5 py-1 text-[9px] font-mono text-text-muted transition-colors duration-300 hover:border-accent-indigo/20 hover:text-accent-indigo"
                       >
                         {technology}
                       </span>
@@ -437,7 +437,7 @@ export function AboutHero() {
                   duration: 0.6,
                   delay: 0.7,
                 }}
-                className="absolute -left-5 top-16 hidden rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-3 shadow-xl shadow-slate-900/[0.06] backdrop-blur-xl sm:block"
+                className="absolute -left-5 top-16 hidden rounded-2xl border border-border bg-bg-surface px-4 py-3 shadow-xl shadow-slate-900/[0.06] backdrop-blur-xl sm:block"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-indigo/[0.07]">
@@ -467,7 +467,7 @@ export function AboutHero() {
                   duration: 0.6,
                   delay: 0.85,
                 }}
-                className="absolute -right-4 bottom-28 hidden rounded-2xl border border-slate-200/80 bg-white/95 px-4 py-3 shadow-xl shadow-slate-900/[0.06] backdrop-blur-xl sm:block"
+                className="absolute -right-4 bottom-28 hidden rounded-2xl border border-border bg-bg-surface px-4 py-3 shadow-xl shadow-slate-900/[0.06] backdrop-blur-xl sm:block"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500/[0.07]">
@@ -497,8 +497,8 @@ export function AboutHero() {
             ==================================================== */}
 
         <Reveal delay={0.2}>
-          <div className="mt-14 border-y border-slate-200/70 py-5 sm:mt-16">
-            <div className="grid grid-cols-2 divide-x divide-y divide-slate-200/70 sm:grid-cols-4 sm:divide-y-0">
+          <div className="mt-14 border-y border-border py-5 sm:mt-16">
+            <div className="grid grid-cols-2 divide-x divide-y divide-border sm:grid-cols-4 sm:divide-y-0">
               {stats.map((stat, index) => {
                 const Icon = stat.icon;
 
@@ -507,7 +507,7 @@ export function AboutHero() {
                     key={stat.label}
                     className={`group flex items-center justify-center gap-3 px-4 py-4 transition-colors duration-300 hover:bg-accent-indigo/[0.018] ${
                       index >= 2
-                        ? "border-t border-slate-200/70 sm:border-t-0"
+                        ? "border-t border-border sm:border-t-0"
                         : ""
                     }`}
                   >

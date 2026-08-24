@@ -100,6 +100,7 @@ export async function POST(request: Request) {
       messages: [{ role: "system", content: system }, ...messages],
     });
   } catch (err) {
+    console.error("[api/chat] Groq request failed:", err);
     const message = toFriendlyAiError(err instanceof Error ? new GroqRequestError(err.message) : err);
     return new Response(message, { status: 502 });
   }
