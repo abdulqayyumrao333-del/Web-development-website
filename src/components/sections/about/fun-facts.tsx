@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { GraduationCap, Sparkles, Lightbulb, BookOpen } from "lucide-react";
 import { Reveal } from "@/components/sections/reveal";
 
@@ -58,7 +58,7 @@ function FlipCard({
         aria-label={flipped ? text : `Reveal: ${label}`}
         className="group h-44 w-full [perspective:1000px] focus:outline-none"
       >
-        <motion.div
+        <m.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="relative h-full w-full [transform-style:preserve-3d]"
@@ -147,7 +147,7 @@ function FlipCard({
               tap to flip back
             </p>
           </div>
-        </motion.div>
+        </m.div>
       </button>
     </Reveal>
   );

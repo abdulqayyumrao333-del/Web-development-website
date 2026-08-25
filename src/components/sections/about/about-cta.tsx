@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -68,7 +68,7 @@ export function AboutCta() {
 
   return (
     <section className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
-      <motion.div
+      <m.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
@@ -104,7 +104,7 @@ export function AboutCta() {
         <div className="relative z-10 px-6 sm:px-12 lg:px-16 pt-14 sm:pt-20 pb-0">
           {/* ===== TOP: eyebrow + heading + subtitle (left-aligned, editorial) ===== */}
           <div className="max-w-2xl">
-            <motion.div
+            <m.div
               variants={item}
               className="inline-flex items-center gap-2 mb-6"
             >
@@ -112,27 +112,27 @@ export function AboutCta() {
               <span className="text-xs font-semibold tracking-[0.18em] uppercase text-indigo-600 dark:text-indigo-400">
                 Ready to collaborate?
               </span>
-            </motion.div>
+            </m.div>
 
-            <motion.h2
+            <m.h2
               variants={item}
               className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-gray-900 dark:text-white"
             >
               Let&apos;s build{" "}
               <span className="text-indigo-600 dark:text-indigo-400">something amazing</span>{" "}
               together
-            </motion.h2>
+            </m.h2>
 
-            <motion.p
+            <m.p
               variants={item}
               className="mt-5 text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-lg leading-relaxed"
             >
               Have a project in mind? I&apos;m always open to new opportunities
               and would love to hear about what you&apos;re building.
-            </motion.p>
+            </m.p>
 
             {/* Contact indicator */}
-            <motion.div
+            <m.div
               variants={item}
               className="mt-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-white/[0.04] border border-gray-200 dark:border-white/10"
             >
@@ -144,11 +144,11 @@ export function AboutCta() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
               </span>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* ===== ACTIONS ===== */}
-          <motion.div
+          <m.div
             variants={item}
             className="mt-10 sm:mt-12 flex flex-wrap items-center gap-4"
           >
@@ -178,12 +178,12 @@ export function AboutCta() {
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* ==========================================
               TRUST RAIL — divided strip, consistent with Hero stats
               ========================================== */}
-          <motion.div
+          <m.div
             variants={item}
             className="mt-14 sm:mt-16 border-t border-gray-200 dark:border-white/10"
           >
@@ -198,9 +198,9 @@ export function AboutCta() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

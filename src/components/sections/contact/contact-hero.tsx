@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -170,7 +170,7 @@ export function ContactHero() {
         aria-hidden
         className="pointer-events-none absolute inset-0 hidden md:block"
       >
-        <motion.div
+        <m.div
           animate={{ y: [0, -10, 0] }}
           transition={{
             duration: 6,
@@ -183,9 +183,9 @@ export function ContactHero() {
             className="h-9 w-9"
             strokeWidth={1.2}
           />
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           animate={{ y: [0, 12, 0] }}
           transition={{
             duration: 7,
@@ -199,7 +199,7 @@ export function ContactHero() {
             className="h-8 w-8"
             strokeWidth={1.2}
           />
-        </motion.div>
+        </m.div>
 
         <span className="absolute left-[10%] top-[68%] font-mono text-[9px] tracking-[0.3em] text-accent-indigo/[0.12]">
           CONNECT
@@ -216,7 +216,7 @@ export function ContactHero() {
 
       <div className="relative mx-auto max-w-6xl px-6">
         {/* Top metadata */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -267,7 +267,7 @@ export function ContactHero() {
               </span>
             </div>
           )}
-        </motion.div>
+        </m.div>
 
         {/* =======================================================
             MAIN CONTACT GRID
@@ -279,7 +279,7 @@ export function ContactHero() {
           ====================================================== */}
 
           <div>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -305,9 +305,9 @@ export function ContactHero() {
                   Let&apos;s talk.
                 </span>
               </h1>
-            </motion.div>
+            </m.div>
 
-            <motion.p
+            <m.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -321,10 +321,10 @@ export function ContactHero() {
               partner, want to automate a process, or simply have
               a question — send me a message and we&apos;ll figure
               out the right next step.
-            </motion.p>
+            </m.p>
 
             {/* CTA */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -370,10 +370,10 @@ export function ContactHero() {
                   WhatsApp
                 </button>
               </a>
-            </motion.div>
+            </m.div>
 
             {/* Small email link */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
@@ -395,14 +395,14 @@ export function ContactHero() {
                   strokeWidth={1.7}
                 />
               </a>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* =====================================================
               RIGHT — CONTACT INFORMATION CARD
           ====================================================== */}
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
@@ -513,14 +513,14 @@ export function ContactHero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* =======================================================
             BOTTOM SIGNATURE
         ======================================================== */}
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -538,14 +538,14 @@ export function ContactHero() {
 
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-accent-indigo/15" />
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* =========================================================
           SCROLL INDICATOR
       ========================================================== */}
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{
@@ -558,7 +558,7 @@ export function ContactHero() {
           Scroll
         </span>
 
-        <motion.div
+        <m.div
           animate={{ y: [0, 5, 0] }}
           transition={{
             duration: 1.6,
@@ -570,8 +570,8 @@ export function ContactHero() {
             className="h-3.5 w-3.5"
             strokeWidth={1.4}
           />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

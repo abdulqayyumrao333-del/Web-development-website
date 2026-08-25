@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -240,7 +240,7 @@ export function SkillsHero() {
       {!reduceMotion &&
         FLOATING_ICONS.map(
           ({ icon: Icon, top, left, delay, duration, size }, index) => (
-            <motion.div
+            <m.div
               key={index}
               aria-hidden
               className="pointer-events-none absolute hidden text-accent-indigo/[0.10] md:block"
@@ -266,7 +266,7 @@ export function SkillsHero() {
                   strokeWidth={1.35}
                 />
               </div>
-            </motion.div>
+            </m.div>
           )
         )}
 
@@ -275,7 +275,7 @@ export function SkillsHero() {
       ========================================================= */}
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
-        <motion.div
+        <m.div
           variants={container}
           initial="hidden"
           animate="visible"
@@ -285,7 +285,7 @@ export function SkillsHero() {
               EYEBROW
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <div className="mb-5 flex items-center justify-center gap-3">
               <span className="h-px w-8 bg-gradient-to-r from-transparent to-accent-indigo/60" />
 
@@ -302,13 +302,13 @@ export function SkillsHero() {
 
               <span className="h-px w-8 bg-gradient-to-l from-transparent to-accent-indigo/60" />
             </div>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               MAIN HEADING
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <h1 className="text-4xl font-bold leading-[1.06] tracking-[-0.035em] text-text-primary sm:text-5xl lg:text-6xl">
               What I{" "}
               <span className="relative inline-block text-accent-indigo">
@@ -319,28 +319,28 @@ export function SkillsHero() {
                 />
               </span>
             </h1>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               DESCRIPTION
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
               A continuously evolving toolkit of languages, frameworks,
               platforms, and AI technologies I use to build fast, scalable,
               production-ready digital experiences.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               TECH PILLS
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <div className="mx-auto mt-7 flex max-w-2xl flex-wrap justify-center gap-2">
               {TECH_TAGS.map((tech, index) => (
-                <motion.span
+                <m.span
                   key={tech}
                   whileHover={
                     reduceMotion
@@ -378,22 +378,22 @@ export function SkillsHero() {
                     ].join(" ")}
                   />
                   {tech}
-                </motion.span>
+                </m.span>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               QUICK STATS
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <div className="mx-auto mt-9 grid w-full max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4">
               {QUICK_STATS.map((stat) => {
                 const Icon = stat.icon;
 
                 return (
-                  <motion.div
+                  <m.div
                     key={stat.label}
                     whileHover={
                       reduceMotion
@@ -446,17 +446,17 @@ export function SkillsHero() {
                         {stat.value}
                       </p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               CTA BUTTONS
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <div className="mt-9 flex flex-wrap justify-center gap-3">
               {/* Primary */}
               <Link
@@ -523,13 +523,13 @@ export function SkillsHero() {
                 Hire Me
               </Link>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               TRUST INDICATOR
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs text-text-muted/45">
               <div className="flex items-center gap-1.5">
                 <CheckCircle
@@ -558,13 +558,13 @@ export function SkillsHero() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* =====================================================
               BOTTOM TECH SIGNATURE
           ===================================================== */}
 
-          <motion.div variants={item}>
+          <m.div variants={item}>
             <div className="mx-auto mt-9 flex w-full max-w-xl items-center gap-4">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-accent-indigo/15" />
 
@@ -586,8 +586,8 @@ export function SkillsHero() {
 
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-accent-indigo/15" />
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

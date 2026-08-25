@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -172,14 +172,14 @@ export function AboutHero() {
               ================================================== */}
 
           <Reveal>
-            <motion.div
+            <m.div
               variants={container}
               initial="hidden"
               animate="visible"
               className="relative"
             >
               {/* Eyebrow */}
-              <motion.div
+              <m.div
                 variants={item}
                 className="mb-6 flex items-center gap-3"
               >
@@ -193,10 +193,10 @@ export function AboutHero() {
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   Available
                 </span>
-              </motion.div>
+              </m.div>
 
               {/* Main Heading */}
-              <motion.div variants={item}>
+              <m.div variants={item}>
                 <h1 className="max-w-3xl text-[3.2rem] font-semibold leading-[0.98] tracking-[-0.055em] text-text-primary sm:text-[4.3rem] lg:text-[4.7rem]">
                   I build
                   <br />
@@ -205,20 +205,20 @@ export function AboutHero() {
                     digital experiences.
                   </span>
                 </h1>
-              </motion.div>
+              </m.div>
 
               {/* Intro */}
-              <motion.p
+              <m.p
                 variants={item}
                 className="mt-7 max-w-xl text-base leading-7 text-text-secondary sm:text-[17px] sm:leading-8"
               >
                 I&apos;m Abdul Qayyum — a Full Stack Developer, AI Engineer,
                 and Web Automation specialist focused on turning complex
                 ideas into fast, scalable, and intelligent digital products.
-              </motion.p>
+              </m.p>
 
               {/* Role pills */}
-              <motion.div
+              <m.div
                 variants={item}
                 className="mt-6 flex flex-wrap gap-2"
               >
@@ -235,10 +235,10 @@ export function AboutHero() {
                     {role}
                   </span>
                 ))}
-              </motion.div>
+              </m.div>
 
               {/* CTA */}
-              <motion.div
+              <m.div
                 variants={item}
                 className="mt-8 flex flex-wrap items-center gap-3"
               >
@@ -265,10 +265,10 @@ export function AboutHero() {
                     strokeWidth={1.7}
                   />
                 </Link>
-              </motion.div>
+              </m.div>
 
               {/* Trust row */}
-              <motion.div
+              <m.div
                 variants={item}
                 className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-2"
               >
@@ -291,10 +291,10 @@ export function AboutHero() {
                 <span className="text-xs text-text-muted">
                   Trusted by 40+ clients worldwide
                 </span>
-              </motion.div>
+              </m.div>
 
               {/* Location / availability */}
-              <motion.div
+              <m.div
                 variants={item}
                 className="mt-8 flex flex-wrap items-center gap-5 border-t border-border pt-5"
               >
@@ -307,8 +307,8 @@ export function AboutHero() {
                   <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500/70" />
                   Available for work
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </Reveal>
 
           {/* ==================================================
@@ -316,7 +316,7 @@ export function AboutHero() {
               ================================================== */}
 
           <Reveal delay={0.12}>
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{
@@ -430,7 +430,7 @@ export function AboutHero() {
               </div>
 
               {/* Floating project badge */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -457,10 +457,10 @@ export function AboutHero() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* Floating AI badge */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -487,8 +487,8 @@ export function AboutHero() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </Reveal>
         </div>
 

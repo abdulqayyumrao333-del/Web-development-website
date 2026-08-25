@@ -12,7 +12,7 @@ import {
   Zap,
   Award,
 } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 // ============================================
 // ANIMATION VARIANTS
@@ -71,7 +71,7 @@ export function BeyondCoding() {
 
   return (
     <section className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-28">
-      <motion.div initial="hidden" animate="visible" variants={reduceMotion ? undefined : containerVariants}>
+      <m.div initial="hidden" animate="visible" variants={reduceMotion ? undefined : containerVariants}>
         {/* ==========================================
             HEADER
             ========================================== */}
@@ -124,7 +124,7 @@ export function BeyondCoding() {
 
           {/* ===== RIGHT: interest timeline ===== */}
           <Reveal delay={0.1}>
-            <motion.div
+            <m.div
               variants={reduceMotion ? undefined : containerVariants}
               className="relative pl-2"
             >
@@ -133,7 +133,7 @@ export function BeyondCoding() {
 
               <div className="space-y-1">
                 {interests.map((interest) => (
-                  <motion.div
+                  <m.div
                     key={interest.label}
                     variants={itemVariants}
                     className="group relative flex items-start gap-5 py-4 sm:py-5"
@@ -149,10 +149,10 @@ export function BeyondCoding() {
                         {interest.description}
                       </p>
                     </div>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </Reveal>
         </div>
 
@@ -160,7 +160,7 @@ export function BeyondCoding() {
             BOTTOM MOTIVATION — pill badges, on-theme only
             ========================================== */}
         <Reveal delay={0.2}>
-          <motion.div
+          <m.div
             variants={itemVariants}
             className="mt-10 sm:mt-12 flex flex-wrap justify-center items-center gap-2.5"
           >
@@ -173,9 +173,9 @@ export function BeyondCoding() {
                 {m.label}
               </span>
             ))}
-          </motion.div>
+          </m.div>
         </Reveal>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

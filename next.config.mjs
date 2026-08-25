@@ -14,6 +14,7 @@ const nextConfig = {
   // ✅ CORRECT: Under experimental for Next.js 15
   experimental: {
     mdxRs: true,
+    optimizeCss: true,
     serverActions: {
       bodySizeLimit: "10mb", // Increased from 1MB to 10MB
     },

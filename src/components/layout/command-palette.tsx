@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { mainNav } from "@/config/nav";
 import { Search, Command, X, Sparkles, ArrowRight, Code2, BookOpen, FolderGit2, User, Briefcase, FileText } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 // ── CommandPalette ──
 export function CommandPalette() {
@@ -77,7 +77,7 @@ export function CommandPalette() {
       {open && (
         <>
           {/* ── Backdrop ── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -87,7 +87,7 @@ export function CommandPalette() {
           />
 
           {/* ── Modal ── */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -228,7 +228,7 @@ export function CommandPalette() {
                 className="absolute top-3 right-3 h-4 w-4 border-t border-r border-accent-indigo/0 group-hover:border-accent-indigo/15 rounded-tr-sm transition-colors duration-300 pointer-events-none"
               />
             </div>
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>

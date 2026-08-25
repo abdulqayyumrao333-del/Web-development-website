@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 const variants: Variants = {
@@ -36,7 +36,7 @@ export function Reveal({
   className?: string;
 }) {
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
@@ -45,7 +45,7 @@ export function Reveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -61,7 +61,7 @@ export function StaggerReveal({
   className?: string;
 }) {
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
@@ -69,7 +69,7 @@ export function StaggerReveal({
       className={className}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -85,9 +85,9 @@ export function StaggerItem({
   className?: string;
 }) {
   return (
-    <motion.div variants={childVariants} className={className}>
+    <m.div variants={childVariants} className={className}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 

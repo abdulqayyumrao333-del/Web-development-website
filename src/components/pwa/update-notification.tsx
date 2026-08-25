@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -34,7 +34,7 @@ export function UpdateNotification() {
 
   return (
     <AnimatePresence>
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
@@ -44,7 +44,7 @@ export function UpdateNotification() {
         <RefreshCw className="h-4 w-4 text-accent-indigo" />
         <span>A new version is available</span>
         <Button size="sm" onClick={handleUpdate}>Reload</Button>
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }

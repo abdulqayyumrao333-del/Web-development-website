@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 export function FloatingTechBadge({
   name,
@@ -15,7 +15,7 @@ export function FloatingTechBadge({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.div
+    <m.div
       className="relative"
       animate={{ y: [0, -5, 0] }}
       transition={{
@@ -65,7 +65,7 @@ export function FloatingTechBadge({
       {/* tooltip */}
       <AnimatePresence>
         {hovered && (
-          <motion.span
+          <m.span
             initial={{ opacity: 0, y: 4, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.96 }}
@@ -80,9 +80,9 @@ export function FloatingTechBadge({
               aria-hidden
               className="absolute left-1/2 -bottom-[5px] -translate-x-1/2 h-2 w-2 rotate-45 border-b border-r border-accent-indigo/20 bg-bg-surface-1"
             />
-          </motion.span>
+          </m.span>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 }

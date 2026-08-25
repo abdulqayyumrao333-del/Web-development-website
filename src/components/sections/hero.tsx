@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -232,7 +232,7 @@ export function Hero() {
               LEFT CONTENT
           ====================================================== */}
 
-          <motion.div
+          <m.div
             variants={reduceMotion ? undefined : container}
             initial={false}
             animate="visible"
@@ -240,7 +240,7 @@ export function Hero() {
           >
             {/* AVAILABLE BADGE */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="
                 mb-6
@@ -280,11 +280,11 @@ export function Hero() {
               >
                 Available for work
               </span>
-            </motion.div>
+            </m.div>
 
             {/* EYEBROW */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="
                 mb-3
@@ -304,13 +304,13 @@ export function Hero() {
               <span className="h-px w-6 shrink-0 bg-indigo-300/70 sm:w-7" />
 
               <span>Building digital experiences</span>
-            </motion.div>
+            </m.div>
 
             {/* =====================================================
                 MAIN HEADING
             ====================================================== */}
 
-            <motion.h1
+            <m.h1
               variants={item}
               className="
                 max-w-[720px]
@@ -343,11 +343,11 @@ export function Hero() {
               </span>
               <br />
               Digital Products.
-            </motion.h1>
+            </m.h1>
 
             {/* DESCRIPTION */}
 
-            <motion.p
+            <m.p
               variants={item}
               className="
                 mt-5
@@ -365,11 +365,11 @@ export function Hero() {
               Generation expert creating fast, scalable and intelligent
               software that turns complex workflows into simple digital
               experiences.
-            </motion.p>
+            </m.p>
 
             {/* FEATURE PILLS */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="mt-6 flex flex-wrap items-center gap-2 sm:mt-7"
             >
@@ -438,11 +438,11 @@ export function Hero() {
                   </div>
                 );
               })}
-            </motion.div>
+            </m.div>
 
             {/* STATS */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="
                 mt-7
@@ -554,11 +554,11 @@ export function Hero() {
                   </div>
                 );
               })}
-            </motion.div>
+            </m.div>
 
             {/* TECH STACK */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="mt-4 flex flex-wrap gap-1.5 sm:mt-5"
             >
@@ -608,11 +608,11 @@ export function Hero() {
                   {tech}
                 </span>
               ))}
-            </motion.div>
+            </m.div>
 
             {/* CTA BUTTONS */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="mt-6 flex flex-wrap items-center gap-3 sm:mt-7"
             >
@@ -722,11 +722,11 @@ export function Hero() {
                   strokeWidth={1.7}
                 />
               </Link>
-            </motion.div>
+            </m.div>
 
             {/* SOCIAL LINKS */}
 
-            <motion.div
+            <m.div
               variants={item}
               className="mt-5 flex items-center gap-2"
             >
@@ -831,14 +831,14 @@ export function Hero() {
               >
                 <Mail className="h-3.5 w-3.5" strokeWidth={1.7} />
               </a>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
 
           {/* =====================================================
               RIGHT — PROFILE COMPOSITION
           ====================================================== */}
 
-          <motion.div
+          <m.div
             initial={
               reduceMotion
                 ? undefined
@@ -1107,7 +1107,7 @@ export function Hero() {
 
               {/* PROJECTS FLOATING CARD */}
 
-              <motion.div
+              <m.div
                 animate={
                   reduceMotion
                     ? undefined
@@ -1166,11 +1166,11 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* AI CARD */}
 
-              <motion.div
+              <m.div
                 animate={
                   reduceMotion
                     ? undefined
@@ -1230,7 +1230,7 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
 
               {/* SMALL TECH MARK */}
 
@@ -1303,7 +1303,7 @@ export function Hero() {
                 />
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
 
@@ -1311,7 +1311,7 @@ export function Hero() {
           SCROLL INDICATOR
       ========================================================== */}
 
-      <motion.div
+      <m.div
         initial={{
           opacity: 0,
         }}
@@ -1347,7 +1347,7 @@ export function Hero() {
           Scroll
         </span>
 
-        <motion.div
+        <m.div
           animate={
             reduceMotion
               ? undefined
@@ -1377,8 +1377,8 @@ export function Hero() {
             className="h-3 w-3 rotate-90 text-slate-400"
             strokeWidth={1.5}
           />
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import {
   Calendar,
   GraduationCap,
@@ -340,7 +340,7 @@ export function JourneyTimeline() {
             {/* scroll progress bar */}
             <div className="mt-8 space-y-1.5">
               <div className="w-full max-w-[10rem] h-1 rounded-full bg-accent-indigo/10 overflow-hidden">
-                <motion.div
+                <m.div
                   className="h-full rounded-full bg-gradient-to-r from-accent-indigo to-accent-indigo/50"
                   style={{ width: `${progress * 100}%` }}
                   transition={{ duration: 0.1 }}

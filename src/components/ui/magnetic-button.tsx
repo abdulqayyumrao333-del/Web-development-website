@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Button, type ButtonProps } from "@/components/ui/button";
 
 export function MagneticButton({ children, ...props }: ButtonProps) {
@@ -15,7 +15,7 @@ export function MagneticButton({ children, ...props }: ButtonProps) {
   }
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
@@ -23,6 +23,6 @@ export function MagneticButton({ children, ...props }: ButtonProps) {
       transition={{ type: "spring", stiffness: 200, damping: 15, mass: 0.5 }}
     >
       <Button {...props}>{children}</Button>
-    </motion.div>
+    </m.div>
   );
 }

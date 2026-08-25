@@ -1,7 +1,7 @@
 "use client";
 
 import { Reveal } from "@/components/sections/reveal";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import {
   Accordion,
   AccordionItem,
@@ -233,7 +233,7 @@ export function AboutFaq() {
                 }}
               />
 
-              <motion.div
+              <m.div
                 variants={reduceMotion ? undefined : containerVariants}
                 initial="hidden"
                 animate="visible"
@@ -246,7 +246,7 @@ export function AboutFaq() {
                   {FAQS.map((faq, i) => {
                     const Icon = faq.icon;
                     return (
-                      <motion.div key={faq.q} variants={itemVariants}>
+                      <m.div key={faq.q} variants={itemVariants}>
                         <AccordionItem value={`faq-${i}`} className="border-0">
                           <AccordionTrigger
                             className={[
@@ -320,11 +320,11 @@ export function AboutFaq() {
                             </div>
                           </AccordionContent>
                         </AccordionItem>
-                      </motion.div>
+                      </m.div>
                     );
                   })}
                 </Accordion>
-              </motion.div>
+              </m.div>
 
               {/* bottom strip */}
               <div

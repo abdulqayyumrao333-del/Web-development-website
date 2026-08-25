@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import {
   ArrowRight,
   Code2,
@@ -61,7 +61,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
       {open && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -76,7 +76,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           />
 
           {/* Mobile Menu */}
-          <motion.aside
+          <m.aside
             initial={{
               opacity: 0,
               y: -14,
@@ -235,7 +235,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                         pathname.startsWith(`${item.href}/`));
 
                     return (
-                      <motion.div
+                      <m.div
                         key={item.href}
                         initial={{
                           opacity: 0,
@@ -318,7 +318,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
                           {/* Active indicator */}
                           {active && (
-                            <motion.span
+                            <m.span
                               layoutId="mobile-active-line"
                               className="
                                 absolute
@@ -350,7 +350,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                             strokeWidth={1.6}
                           />
                         </Link>
-                      </motion.div>
+                      </m.div>
                     );
                   })}
                 </div>
@@ -516,7 +516,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
                 </div>
               </div>
             </div>
-          </motion.aside>
+          </m.aside>
         </>
       )}
     </AnimatePresence>

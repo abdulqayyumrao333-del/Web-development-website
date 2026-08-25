@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { 
   CheckCircle2, Briefcase, MessagesSquare, Users, HelpCircle, 
   MoreHorizontal, MessageCircle, Mail, CalendarClock, Paperclip,
@@ -151,7 +151,7 @@ export function SmartContactForm() {
 
   if (submitted) {
     return (
-      <motion.div
+      <m.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -167,14 +167,14 @@ export function SmartContactForm() {
           className="absolute bottom-4 left-4 h-6 w-6 border-b-2 border-l-2 border-accent-indigo/25 rounded-bl-md pointer-events-none"
         />
 
-        <motion.div
+        <m.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.15, type: "spring", stiffness: 200, damping: 12 }}
           className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 mx-auto"
         >
           <CheckCircle2 className="h-8 w-8 text-emerald-500" strokeWidth={1.75} />
-        </motion.div>
+        </m.div>
         <h3 className="mt-5 text-2xl font-bold text-text-primary">Message Sent! 🎉</h3>
         <p className="mt-2 max-w-sm mx-auto text-text-secondary">
           Thanks for reaching out — here's what happens next:
@@ -200,7 +200,7 @@ export function SmartContactForm() {
           Send another message
           <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
         </button>
-      </motion.div>
+      </m.div>
     );
   }
 
@@ -294,7 +294,7 @@ export function SmartContactForm() {
       {/* ── Budget & Timeline (conditional) ── */}
       <AnimatePresence>
         {projectType && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -314,7 +314,7 @@ export function SmartContactForm() {
                 {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 

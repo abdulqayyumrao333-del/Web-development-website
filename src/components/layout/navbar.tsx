@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { mainNav } from "@/config/nav";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
@@ -409,7 +409,7 @@ export function Navbar() {
 
                     {(active ||
                       (isServices && isServicesActive)) && (
-                      <motion.span
+                      <m.span
                         layoutId="navbar-active"
                         className="
                           absolute
@@ -458,7 +458,7 @@ export function Navbar() {
                   {isServices && (
                     <AnimatePresence>
                       {servicesOpen && (
-                        <motion.div
+                        <m.div
                           initial={{
                             opacity: 0,
                             y: 8,
@@ -582,7 +582,7 @@ export function Navbar() {
                               </Link>
                             );
                           })}
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   )}

@@ -8,7 +8,7 @@ import {
   Flag,
 } from "lucide-react";
 import { Reveal } from "@/components/sections/reveal";
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 
 const VALUES = [
   {
@@ -130,7 +130,7 @@ export function CoreValues() {
             EDITORIAL VALUES LIST
             ========================================== */}
         <Reveal delay={0.1}>
-          <motion.div
+          <m.div
             variants={reduceMotion ? undefined : containerVariants}
             initial="hidden"
             animate="visible"
@@ -141,7 +141,7 @@ export function CoreValues() {
             <div className="absolute top-5 right-5 h-8 w-8 border-t-2 border-r-2 border-indigo-300/50 rounded-tr-lg pointer-events-none z-10" />
 
             {VALUES.map((value, i) => (
-              <motion.div
+              <m.div
                 key={value.title}
                 variants={itemVariants}
                 className={`group relative grid grid-cols-[auto_1fr] sm:grid-cols-[5rem_auto_1fr] items-start sm:items-center gap-4 sm:gap-6 px-5 sm:px-8 py-6 sm:py-8 overflow-hidden transition-colors hover:bg-indigo-50/40 ${
@@ -170,9 +170,9 @@ export function CoreValues() {
                     {value.text}
                   </p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         </Reveal>
 
         {/* ==========================================

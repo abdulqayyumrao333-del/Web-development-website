@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Github, ExternalLink, ArrowUpRight, Star, Sparkles } from "lucide-react";
@@ -25,7 +25,7 @@ export function FeaturedProjectCard({ project, index = 0 }: { project: Project; 
   }
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       onMouseMove={onMouseMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
@@ -150,6 +150,6 @@ export function FeaturedProjectCard({ project, index = 0 }: { project: Project; 
         {/* bottom accent line */}
         <div className="absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-accent-indigo/40 to-transparent transition-all duration-700 rounded-b-full" />
       </div>
-    </motion.div>
+    </m.div>
   );
 }
