@@ -234,7 +234,7 @@ export function Hero() {
 
           <motion.div
             variants={reduceMotion ? undefined : container}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="relative min-w-0"
           >
