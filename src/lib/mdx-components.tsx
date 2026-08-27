@@ -6,6 +6,28 @@ import { Callout } from "@/components/blog/detail/callout";
 export const prettyCodeOptions = {
   theme: { dark: "github-dark", light: "github-light" },
   keepBackground: false,
+  defaultLang: "plaintext",
+  langs: [
+    "javascript",
+    "js",
+    "typescript",
+    "ts",
+    "jsx",
+    "tsx",
+    "bash",
+    "shell",
+    "json",
+    "css",
+    "html",
+    "python",
+    "sql",
+    "yaml",
+    "markdown",
+    "md",
+    "diff",
+    "prisma",
+    "plaintext",
+  ],
 };
 
 // rehype-pretty-code wraps output in <pre><code>...</code></pre> with data
