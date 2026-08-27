@@ -174,7 +174,7 @@ export function AboutHero() {
           <Reveal>
             <m.div
               variants={container}
-              initial="hidden"
+              initial={false}
               animate="visible"
               className="relative"
             >

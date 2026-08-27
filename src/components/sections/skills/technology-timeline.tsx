@@ -265,7 +265,7 @@ export async function TechnologyTimeline() {
                       const month = skill.learnedAt.toLocaleDateString(undefined, { month: "short" });
                       
                       return (
-                        <Reveal key={skill.id} delay={0.15 + i * 0.04 + parseInt(year) * 0.02}>
+                        <Reveal key={skill.id} delay={0.15 + i * 0.04 + yearIndex * 0.02}>
                           <div
                             className="group relative overflow-hidden rounded-xl border border-accent-indigo/12 bg-gradient-to-br from-bg-surface-1/95 to-bg-surface-1/70 backdrop-blur-sm transition-all duration-400 hover:border-accent-indigo/30 hover:shadow-lg hover:shadow-accent-indigo/5 hover:-translate-y-0.5 p-4"
                             style={{ boxShadow: panelShadow }}

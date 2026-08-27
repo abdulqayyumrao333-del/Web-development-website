@@ -277,7 +277,7 @@ export function SkillsHero() {
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
         <m.div
           variants={container}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="w-full"
         >
