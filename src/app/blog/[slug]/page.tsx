@@ -62,10 +62,10 @@ export default async function BlogDetailPage({ params }: Props) {
       <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-6 py-12 lg:grid-cols-[200px_1fr]">
         <TableOfContents headings={headings} />
 
-        <div className="min-w-0">
+        <div className="min-w-0 lg:col-start-2">
           {post.seriesName && <SeriesNavigation seriesName={post.seriesName} currentOrder={post.seriesOrder} />}
 
-          <div className="prose prose-invert max-w-none prose-headings:scroll-mt-24 prose-headings:font-semibold prose-a:text-accent-indigo prose-img:rounded-md prose-img:border prose-img:border-border">
+          <div className="prose dark:prose-invert max-w-none prose-headings:scroll-mt-24 prose-headings:font-semibold prose-a:text-accent-indigo prose-img:rounded-md prose-img:border prose-img:border-border">
             <CompiledMdx source={post.contentMdx} />
           </div>
 
