@@ -14,7 +14,6 @@ const nextConfig = {
   // ✅ CORRECT: Under experimental for Next.js 15
   experimental: {
     mdxRs: true,
-    optimizeCss: true,
     serverActions: {
       bodySizeLimit: "10mb", // Increased from 1MB to 10MB
     },
@@ -44,4 +43,12 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+// Bundle Analyzer: only turns on when you run `ANALYZE=true npm run build`.
+// Completely inert (zero effect) on every normal build/deploy, including
+// Vercel — safe to leave in place permanently.
+import bundleAnalyzer from "@next/bundle-analyzer";
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
+export default withBundleAnalyzer(nextConfig);
