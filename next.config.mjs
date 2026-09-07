@@ -46,9 +46,4 @@ const nextConfig = {
 // Bundle Analyzer: only turns on when you run `ANALYZE=true npm run build`.
 // Completely inert (zero effect) on every normal build/deploy, including
 // Vercel — safe to leave in place permanently.
-import bundleAnalyzer from "@next/bundle-analyzer";
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
-
-export default withBundleAnalyzer(nextConfig);
+export default nextConfig;
